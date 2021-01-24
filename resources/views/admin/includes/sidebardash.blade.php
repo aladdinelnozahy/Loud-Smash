@@ -11,53 +11,48 @@
     </div>
     <ul class="nav">
       <li class="active ">
-        <a href="./dashboard.html">
+        <a href="{{Route('admin.dashboard')}}">
           <i class="tim-icons icon-chart-pie-36"></i>
           <p>Dashboard</p>
         </a>
       </li>
       <li>
-        <a href="./icons.html">
+        <a href="{{Route('create.user')}}">
           <i class="tim-icons icon-atom"></i>
-          <p>Icons</p>
+          <p>Users</p>
         </a>
       </li>
       <li>
-        <a href="./map.html">
+        <a href="{{Route('admin.artists')}}">
           <i class="tim-icons icon-pin"></i>
-          <p>Maps</p>
+          <p>Artists</p>
         </a>
       </li>
       <li>
-        <a href="./notifications.html">
+        <a href="{{Route('admin.bands')}}">
           <i class="tim-icons icon-bell-55"></i>
-          <p>Notifications</p>
+          <p>Bands</p>
         </a>
       </li>
       <li>
-        <a href="./user.html">
+        <a href="{{Route('admin.songs')}}">
           <i class="tim-icons icon-single-02"></i>
-          <p>User Profile</p>
+          <p>Songs</p>
         </a>
       </li>
       <li>
-        <a href="./tables.html">
+        <a href="{{Route('admin.events')}}">
           <i class="tim-icons icon-puzzle-10"></i>
-          <p>Table List</p>
+          <p>Events</p>
         </a>
       </li>
       <li>
-        <a href="./typography.html">
+        <a href="{{Route('admin.categories')}}">
           <i class="tim-icons icon-align-center"></i>
-          <p>Typography</p>
+          <p>Categories</p>
         </a>
       </li>
-      <li>
-        <a href="./rtl.html">
-          <i class="tim-icons icon-world"></i>
-          <p>RTL Support</p>
-        </a>
-      </li>
+      
     </ul>
   </div>
 </div>

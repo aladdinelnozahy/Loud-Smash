@@ -24,20 +24,26 @@ Route::get(
 //     Route::get('/admin', function () {
 //         return view('admin.login');
 //     })->name('admin.login');
-// // Route::get('/admin', function () {
-// //     return view('admin.index');
-// //     })->name('admin.login'); 
 
 
 
 // for now only
+Route::group(['prefix'=>'admin' , 'namespace' => 'Admin'], function(){
 
-Route::get(
-    '/admin', 'Admin\AdminController@IndexLogin'
-    )->name('admin.login');
+    Route::get('/', 'AdminController@login')->name('admin.login');
+    Route::get('/dashboard', 'AdminController@dashboard')->name('admin.dashboard');   
+    Route::get ('/users','AdminController@user')->name('create.user');
 
-Route::get('/admin/dashboard',function () {
-    return view ('admin.dashboard');
+    Route::get ('/artists','AdminController@artist')->name('admin.artists');
+    Route::get ('/bands','AdminController@band')->name('admin.bands');
+    Route::get ('/songs','AdminController@song')->name('admin.songs');
+    Route::get ('/events','AdminController@event')->name('admin.events');
+    Route::get ('/categories','AdminController@category')->name('admin.categories');
 });
+
+    
+// Route::get('/admin/dashboard',function () {
+//     return view ('admin.dashboard');
+// });
 
 

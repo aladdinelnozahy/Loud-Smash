@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "Admin" middleware group. Now create something great!
 |
 */
-Route::get(
-    '/admin', 'Admin\AdminController@IndexLogin'
-    )->name('admin.login');
+// Route::get(
+//     '/admin', 'Admin\AdminController@IndexLogin'
+//     )->name('admin.login');
 
 
 
@@ -22,8 +22,5 @@ Route::get(
 //     return view('admin.login');
 // })->name('admin.login');
 
-// Route::get('/admin/dashboard',function () {
-//     return view ('admin.layout.master');
-// });
 
 
