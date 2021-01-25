@@ -21,6 +21,9 @@
                     <div class="form-group">
                     <label>Event name</label>
                     <input type="text" name="name" class="form-control" >
+                    @error('name')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                     </div>
                 </div>
             
@@ -29,12 +32,18 @@
                     <div class="form-group">
                     <label>Location</label>
                     <input type="text" name="location" class="form-control" >
+                    @error('location')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                     </div>
                 </div>
                 <div class="">
                     <div class="form-group">
                     <label>Date</label>
                     <input type="text" name="name" class="form-control" >
+                    @error('date')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                     </div>
                 </div>
                 <div class="">

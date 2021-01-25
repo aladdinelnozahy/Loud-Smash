@@ -8,5 +8,5 @@ class Song extends Model
 {
     public $timestamps = false;
     protected $table ='songs';
-    protected $fillable=['s_name','s_author','s_reldate'];
+    protected $fillable=['s_name','s_author','s_reldate','b_id'];
 }

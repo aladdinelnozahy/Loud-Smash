@@ -19,6 +19,9 @@
                     <div class="form-group">
                     <label>Add category</label>
                     <input type="text" name="name" class="form-control" >
+                    @error('name')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <button type="submit" class="btn btn-fill btn-primary">Save</button>
 

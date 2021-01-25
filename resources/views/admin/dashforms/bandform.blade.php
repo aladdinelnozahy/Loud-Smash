@@ -21,6 +21,10 @@
                     <div class="form-group">
                     <label> Name</label>
                     <input type="text" name="name" class="form-control" >
+                    @error('name')
+                    <span class="text-danger">{{ $message }}</span>
+                     @enderror
+
                     </div>
                 </div>
                 <div class=" pl-md-1">
@@ -44,6 +48,10 @@
                 <div class="form-group">
                     <label>Bio</label>
                     <textarea name="bio" class="form-control"></textarea>
+                    @error('bio')
+                    <span class="text-danger">{{ $message }}</span>
+                     @enderror
+
                     </div>
                 
                 <div class=" pr-md-1">

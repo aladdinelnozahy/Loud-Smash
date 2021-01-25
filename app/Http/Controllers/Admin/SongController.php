@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Song;
+use Illuminate\Auth\Events\Validated;
+use Illuminate\Support\Facades\Validator;
+
 
 class SongController extends Controller
 {
@@ -15,14 +18,27 @@ class SongController extends Controller
         return view ('admin.layout.songs',compact('songs'));
     }
     public function song_form (){
-        return view ('admin.dashforms.songform');
+        $songs=Song::get();
+        return view ('admin.dashforms.songform',compact('songs'));
     }
     public function add_song (Request $request){
+        $validator=Validator::make($request->all(),
+        [
+            'name'=>'required:songs,s_name'
+        ],
+        [
+            'name.required'=>'Song name is required'
+        ]);
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInputs($request->all());
+        }
+
+
         Song::create([
             's_name' => $request->name ,
-            's_author' => $request->name ,
-            's_reldate' => $request->name , 
-            'b_id' => $request->name 
+            's_author' => $request->author ,
+            's_reldate' => $request->reldate , 
+            'b_id' =>'' 
             
         ]);
         return redirect()->back()->with('success','song created successfully');

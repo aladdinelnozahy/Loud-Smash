@@ -1,5 +1,5 @@
 @extends('admin.master')
-@section('title','Manage Songs')
+@section('title','Add Song')
 @section('admincontent')
 
 <div class="row">
@@ -21,6 +21,11 @@
                     <div class="form-group">
                     <label>Song Name</label>
                     <input type="text" name="name" class="form-control">
+                    @error('name')
+                        <span class="text-danger">{{ $message }}</span>
+
+                    @enderror
+
                     </div>
                 </div>
              
@@ -42,8 +47,8 @@
                     <div class="form-group">
                     <label>Category </label>
                     <select   name="category" >
-                        @foreach ($categories as $categoy)
-                        <option >  {{$category ['c_name']}}</option>
+                        @foreach ($songs as $song)
+                        <option >  {{$songs->b_id}}</option>
                         @endforeach
                     </select>
                      </div>

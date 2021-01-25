@@ -16,6 +16,7 @@
                         <th>Name</th>
                         <th>Author</th>
                         <th>Release Date</th>
+                        <th>category</th>
                         <th>Edit</th>
                     </tr>
                     <tbody>
@@ -25,6 +26,7 @@
                             <td>{{$song ['s_name']}}</td>
                             <td>{{$song ['s_author'] }}</td>
                             <td>{{$song ['s_reldate'] }}</td>
+                            <td>{{$song ['b_id'] }}</td>
                             <td> 
                                 <a href="" class="btn btn-primary">Edit</a>
                                 <a href="" class="btn btn-alert">Delete</a>
