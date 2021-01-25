@@ -20,8 +20,9 @@ class EventController extends Controller
     }
 
     public function add_event (Request $request){
-        // event form  validation
-            $validator = validator::make($request->all(),
+    //==============start form validation=====================
+
+        $validator = validator::make($request->all(),
             [
                 'name'=>'required|unique:events,e_name',
                 'location' => 'required:events,e_location',
@@ -38,8 +39,18 @@ class EventController extends Controller
                 withErrors($validator)->withInputs($request->all());
             }
 
+    //==============end form creation=====================
+    
+    //==============start photo validation====================
+        $ext=$request->photo->getClientOriginalExtension();
+        $filename=time().'.'.$ext;
+        $path='photos/events';
+        $request->photo->move($path,$filename);
 
-        // event creation
+    //==============start photo validation====================
+
+
+    //==============start event creation=====================
         Event::create([
             'e_name' => $request->name ,
             'e_location' => $request->location ,
@@ -49,4 +60,16 @@ class EventController extends Controller
         ]);
         return redirect()->back()->with('success','event created successfully');
     }
+    //==============end event creation=====================
+
+    //==============start event delete=====================
+    public function delete_event($id){
+        $event= event::find($id);
+        $event ->delete();
+        return redirect()->back()->with('deleted','deleted successfully');
+
+    }
+    //==============end event delete=====================
+
+
 }

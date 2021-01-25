@@ -55,6 +55,31 @@ return [
             'visibility' => 'public',
         ],
 
+        'artists' => [
+            'driver' => 'local',
+            'root' => storage_path('public/photos/artists'),
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+        ],
+        'bands' => [
+            'driver' => 'local',
+            'root' => storage_path('public/photos/bands'),
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+        ],
+        'events' => [
+            'driver' => 'local',
+            'root' => storage_path('public/photos/events'),
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+        ],
+        'users' => [
+            'driver' => 'local',
+            'root' => storage_path('public/photos/users'),
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

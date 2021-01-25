@@ -13,13 +13,9 @@ class CategoryController extends Controller
         $categories=category::get();
         return view ('admin.layout.categories',compact('categories'));
     }
-
-    
     public function category_form (){
         return view ('admin.dashforms.categoryform');
     }
-
-
     public function add_category (Request $request){
         // validation 
        $validator= validator::make($request->all(),
@@ -29,18 +25,29 @@ class CategoryController extends Controller
         [
             'name.required'=> 'category name field is required' ,
             'name.unique' => 'category already exist'
-
         ]);
         if ($validator -> fails()){
             return redirect()->back()->withErrors($validator)->
             withInputs($request->all());
         }
-
-
         Category::create([
-            'name' => $request->name 
-            
+            'name' => $request->name     
         ]);
         return redirect()->back()->with('success','category created successfully');
     }
+    //==============start delete category=====================
+    public function delete_category ($id){
+       $category= category::find($id);
+       $category->delete();
+       return redirect()->back()->with('deleted','deleted successfully');
+    }
+    //==============end delete category=====================
+
+    //==============start edit category=====================
+
+    public function edit_category($is){
+        // return $id;
+    }
+    //==============start edit category=====================
+
 }

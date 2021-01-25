@@ -10,6 +10,11 @@
             <div class="card-header">
             <h5 class="title">Manage Users</h5>
             </div>
+            @if (session()->get('deleted'))
+                <div class="alert alert-info">
+                    {{ session()->get('deleted') }}
+                </div>
+            @endif
             <div class="card-body">
 
                 <table class="table table-border title" style="color:white; text-align:center">
@@ -27,9 +32,10 @@
                             <td>{{$user ['u_email'] }}</td>
                             <td>{{$user ['u_phone'] }}</td>
                             <td> 
+                                <a href="" class="btn btn-success">Show songs</a>
                                 <a href="" class="btn btn-primary">Edit</a>
-                                <a href="" class="btn btn-alert">Delete</a>
-                            </td>
+                                <a href="{{ route('delete.user',$user->id ) }}" class="btn btn-danger">Delete</a>
+                        </td>
                             @endforeach
 
                         </tr>

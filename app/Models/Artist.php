@@ -8,6 +8,6 @@ class Artist extends Model
 {
     public $timestamps = false;
     protected $table ='artists';
-    protected $fillable=['a_name','a_age','a_about'];
+    protected $fillable=['a_name','a_age','a_about','a_photo'];
     // protected $hidden =['band_id'];
 }

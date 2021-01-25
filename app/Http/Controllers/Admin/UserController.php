@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
-class UserController extends Controller
-{
+class UserController extends Controller{
+    
+    //==============start get data=====================
+
     public function user (){
         $users =User::get();
         return view ('admin.layout.users', compact('users'));
@@ -16,8 +18,10 @@ class UserController extends Controller
     public function user_form (){
         return view ('admin.dashforms.userform');
     }
-    
+    //==============end get data=====================
+
     public function add_user (Request $request){
+    //==============start form validation=====================
 
     $validator=validator::make($request->all(),
     [
@@ -35,6 +39,8 @@ class UserController extends Controller
     if($validator->fails()){
         return redirect()->back()->withErrors($validator)->withInputs($request->all());
     }
+    //==============end form validation=====================
+
         User::create([
             'u_username' => 'username' , 
             'u_name' => 'name',
@@ -44,6 +50,19 @@ class UserController extends Controller
             'r_id' => '1'
         ]);
         return redirect()->back()->with('success','user created successfully');
+        //==============start photo validation=====================
+        $ext=$request->photo->getClientOriginalExtension();
+        $filename = time().'.'.$ext ;
+        $path='photos/users';
+        $request->photo->move($path,$filename);
+        //==============start photo validation=====================
     }
 
+    //==============start delete user=====================
+    public function delete_user ($id){
+        $user= user::find($id);
+        $user->delete();
+        return redirect()->back()->with('deleted','deleted successfully');
+     }
+    //==============end delete user=====================
 }
