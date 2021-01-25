@@ -2,6 +2,8 @@
 @section('title','manage users')
 @section('admincontent')
 
+<a href="{{ Route('user.form') }}"><button type="button" class="btn btn-success">Add New User</button></a>
+
 <div class="row">
     <div class="col-md-10">
         <div class="card">
@@ -9,59 +11,35 @@
             <h5 class="title">Manage Users</h5>
             </div>
             <div class="card-body">
-            <form>
-                <div class="row">
-                
-                <div class="col-md-6 px-md-1">
-                    <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" class="form-control" placeholder="Username" value="michael23">
-                    </div>
-                </div>
-                <div class="col-md-6 pl-md-1">
-                    <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" placeholder="mike@email.com">
-                    </div>
-                </div>
-                </div>
-                <div class="row">
-                <div class="col-md-6 pr-md-1">
-                    <div class="form-group">
-                    <label>First Name</label>
-                    <input type="text" class="form-control" placeholder="Company" value="Mike">
-                    </div>
-                </div>
-                <div class="col-md-6 pl-md-1">
-                    <div class="form-group">
-                    <label>Last Name</label>
-                    <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
-                    </div>
-                </div>
-                </div>
-                <div class=" pl-md-1">
-                    <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control" placeholder="Last Name" value="Andrew">
-                    </div>
-                </div>
-                <div class=" pr-md-1">
-                    <div class="form-group">
-                    <label>Phone</label>
-                    <input type="text" class="form-control" placeholder="Company" value="Mike">
-                    </div>
-                </div>
-                <div class=" pr-md-1">
-                    <div class="form-group">
-                    <label class="form-label" for="customFile">Default file input example</label>
-                    <input type="file" class="form-control" id="customFile" />
-                    </div>
-                </div>
-            </form>
+
+                <table class="table table-border title" style="color:white; text-align:center">
+                    <tr>
+                        <th>User Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Edit</th>
+                    </tr>
+                    <tbody>
+                            @foreach ($users as $user )
+                        <tr>
+
+                            <td>{{$user ['u_name']}}</td>
+                            <td>{{$user ['u_email'] }}</td>
+                            <td>{{$user ['u_phone'] }}</td>
+                            <td> 
+                                <a href="" class="btn btn-primary">Edit</a>
+                                <a href="" class="btn btn-alert">Delete</a>
+                            </td>
+                            @endforeach
+
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
+
             </div>
-            <div class="card-footer">
-            <button type="submit" class="btn btn-fill btn-primary">Save</button>
-        </div>
     </div>
 </div>
    

@@ -12,15 +12,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "Admin" middleware group. Now create something great!
 |
 */
-// Route::get(
-//     '/admin', 'Admin\AdminController@IndexLogin'
-//     )->name('admin.login');
+Route::get(
+    '/', 'FrontEnd\SiteController@index'
+    )->name('site.home');
 
-
-
-// Route::get('/admin', function () {
-//     return view('admin.login');
-// })->name('admin.login');
 
 
 

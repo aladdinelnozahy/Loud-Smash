@@ -13,43 +13,51 @@
       <li class="active ">
         <a href="{{Route('admin.dashboard')}}">
           <i class="tim-icons icon-chart-pie-36"></i>
-          <p>Dashboard</p>
+          <span>Dashboard</span>
+          <span class="badge badge-info"></span>
+
         </a>
       </li>
       <li>
         <a href="{{Route('create.user')}}">
           <i class="tim-icons icon-atom"></i>
-          <p>Users</p>
+          <span>Users</span>
+          <span class="badge badge-info">{{ App\Models\User::count() }}</span>
         </a>
       </li>
       <li>
-        <a href="{{Route('admin.artists')}}">
+        <a href="{{Route('admin.artist')}}">
           <i class="tim-icons icon-pin"></i>
-          <p>Artists</p>
+          <span>Artists</span>
+          <span class="badge badge-info">{{ App\Models\Artist::count() }}</span>
         </a>
       </li>
       <li>
         <a href="{{Route('admin.bands')}}">
           <i class="tim-icons icon-bell-55"></i>
-          <p>Bands</p>
+          <span>Bands</span>
+          <span class="badge badge-info">{{ App\Models\Band::count() }}</span>
         </a>
       </li>
       <li>
         <a href="{{Route('admin.songs')}}">
           <i class="tim-icons icon-single-02"></i>
-          <p>Songs</p>
+          <span>Songs</span>
+          <span class="badge badge-info">{{ App\Models\Song::count() }}</span>
         </a>
       </li>
       <li>
         <a href="{{Route('admin.events')}}">
           <i class="tim-icons icon-puzzle-10"></i>
-          <p>Events</p>
+          <span>Events</span>
+          <span class="badge badge-info">{{ App\Models\Event::count() }}</span>
         </a>
       </li>
       <li>
         <a href="{{Route('admin.categories')}}">
           <i class="tim-icons icon-align-center"></i>
-          <p>Categories</p>
+          <span>Categories</span>
+          <span class="badge badge-info">{{ App\Models\Category::count() }}</span>
         </a>
       </li>
       

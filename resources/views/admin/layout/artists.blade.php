@@ -2,43 +2,50 @@
 @section('title','Manage Artists')
 @section('admincontent')
 
+
+<a href="{{ Route('artist.form') }}"><button type="button" class="btn btn-success">Add New Artist</button></a>
+
+
+
 <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-            <h5 class="title">Manage Artists</h5>
-            </div>
+            <h5 class="title">Manage Artists</h5></div>
             <div class="card-body">
-            <form>
-              
-                <div class=" pr-md-1">
-                    <div class="form-group">
-                    <label> Name</label>
-                    <input type="text" class="form-control" >
-                    </div>
-                </div>
-                <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                    <label>Age</label>
-                    <input type="text" class="form-control"  >
-                    </div>
-                </div>
-                </div>
-                <div class=" pr-md-1">
-                    <div class="form-group">
-                    <label>About</label>
-                    <textarea class="form-control"></textarea>
-                    </div>
-                </div>   
-               
-            </form>
+                <table class="table table-border title" style="color:white; text-align:center">
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>About</th>
+                        <th>Edit</th>
+
+                    </tr>
+                    <tbody>
+                            @foreach ($artists as $artist )
+                        <tr>
+
+                            <td>{{$artist ['a_name']}}</td>
+                            <td>{{$artist ['a_age'] }}</td>
+                            <td>{{$artist ['a_about'] }}</td>
+                            <td> 
+                                <a href="" class="btn btn-primary">Edit</a>
+                                <a href="" class="btn btn-alert">Delete</a>
+                            </td>
+                            @endforeach
+
+                        </tr>
+                    </tbody>
+
+                </table>
+
+
+
+                
+
             </div>
-            <div class="card-footer">
-            <button type="submit" class="btn btn-fill btn-primary">Save</button>
         </div>
     </div>
-</div>
 </div>
 
 

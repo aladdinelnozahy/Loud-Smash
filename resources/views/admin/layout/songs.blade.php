@@ -2,6 +2,8 @@
 @section('title','Manage Songs')
 @section('admincontent')
 
+<a href="{{ Route('song.form') }}"><button type="button" class="btn btn-success">Add New Song</button></a>
+
 <div class="row">
     <div class="col-md-10">
         <div class="card">
@@ -9,35 +11,33 @@
             <h5 class="title"> Manage Songs</h5>
             </div>
             <div class="card-body">
-            <form>
-                <div class=" px-md-1">
-                    <div class="form-group">
-                    <label>Song Name</label>
-                    <input type="text" class="form-control">
-                    </div>
-                </div>
-             
-                <div class=" pr-md-1">
-                    <div class="form-group">
-                    <label>Author </label>
-                    <input type="text" class="form-control" >
-                    </div>
-                </div>
+                <table class="table table-border title" style="color:white; text-align:center">
+                    <tr>
+                        <th>Name</th>
+                        <th>Author</th>
+                        <th>Release Date</th>
+                        <th>Edit</th>
+                    </tr>
+                    <tbody>
+                            @foreach ($songs as $song )
+                        <tr>
 
-                <div class=" pr-md-1">
-                    <div class="form-group">
-                    <label>Release Year </label>
-                    <input type="text" class="form-control" >
-                    </div>
-                </div>
-                
-            </form>
-            </div>
-            <div class="card-footer">
-            <button type="submit" class="btn btn-fill btn-primary">Save</button>
+                            <td>{{$song ['s_name']}}</td>
+                            <td>{{$song ['s_author'] }}</td>
+                            <td>{{$song ['s_reldate'] }}</td>
+                            <td> 
+                                <a href="" class="btn btn-primary">Edit</a>
+                                <a href="" class="btn btn-alert">Delete</a>
+                            </td>
+                            @endforeach
+
+                        </tr>
+                    </tbody>
+                </table>
+
         </div>
     </div>
-    </div>
+</div>
    
 
 
