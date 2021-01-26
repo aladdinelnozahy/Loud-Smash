@@ -36,7 +36,7 @@ class EventController extends Controller
             ]);
             if($validator->fails()){
                 return redirect()->back()->
-                withErrors($validator)->withInputs($request->all());
+                withErrors($validator)->withInputs($request->flash());
             }
 
     //==============end form creation=====================
@@ -70,6 +70,27 @@ class EventController extends Controller
 
     }
     //==============end event delete=====================
+    //==============start edit event=====================
 
+    public function edit_event($id){
+        $event = event::find($id);
+        $array=array('event'=>$event);
+        return view('admin.editforms.eventedit',$array) ;
+    }
+    //==============start edit event=====================
+
+    //==============start save edited event=====================
+
+    public function update_event (Request $request,$id){
+      
+        $event =event::find($id);
+        $event->e_name =$request->get('name');
+        $event->e_location =$request->get('location');
+        $event->e_date =$request->get('date');
+        $event->e_description =$request->get('description');
+        $event->save();
+        return redirect()->back()->with('success','Event Updated Successfully');
+    }
+    //==============start save edited event=====================
 
 }

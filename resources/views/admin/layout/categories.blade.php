@@ -37,7 +37,7 @@
                                     {{$category ['c_name']}}
                                 </td>
                                 <td> 
-                                    <a href="" class="btn btn-success">Show songs</a>
+                                    <a href="{{ route('show.songs',$category->c_id) }}" class="btn btn-success">Show songs</a>
                                     <a href="{{ route('edit.category',$category->id) }}" class="btn btn-primary">Edit</a>
                                     <a href="{{ route('delete.category',$category->id ) }}" class="btn btn-danger">Delete</a>
                                 </td>

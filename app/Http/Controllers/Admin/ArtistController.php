@@ -33,7 +33,7 @@ class ArtistController extends Controller
 
         ]);
         if($validator->fails()){
-            return redirect()->back()->withErrors($validator)->withInputs($request->all());
+            return redirect()->back()->withErrors($validator)->withInputs($request->flash());
         }
         //==============end validation =====================
 
@@ -64,6 +64,27 @@ class ArtistController extends Controller
             return redirect()->back()->with('deleted','deleted successfully');
          }
         //==============end delete user=====================
+        //==============start edit category=====================
+
+        public function edit_artist($id){
+            $artist = artist::find($id);
+            $array=array('artist'=>$artist);
+            return view('admin.editforms.artistedit',$array) ;
+        }
+        //==============start edit category=====================
+        //==============start save edited artist=====================
+
+        public function update_artist (Request $request,$id){
+      
+            $artist =artist::find($id);
+            $artist->a_name =$request->get('name');
+            $artist->a_age =$request->get('age');
+            $artist->a_about =$request->get('about');
+            // $artist->photo =$request->get('photo');
+            $artist->save();
+            return redirect()->back()->with('success','Category Updated Successfully');
+        }
+        //==============start save edited artist=====================
     
     
 }

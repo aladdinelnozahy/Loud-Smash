@@ -42,7 +42,7 @@ class SongController extends Controller
             'name.required'=>'Song name is required'
         ]);
         if($validator->fails()){
-            return redirect()->back()->withErrors($validator)->withInputs($request->all());
+            return redirect()->back()->withErrors($validator)->withInputs($request->flash());
         }
 
     //==============end form validation =====================
@@ -77,6 +77,49 @@ class SongController extends Controller
      }
      //==============end delete song=====================
  
+    //==============start edit category=====================
 
+    public function edit_song($id){
+        $song = song::find($id);
+        $array=array('song'=>$song);
+        return view('admin.editforms.songedit',$array) ;
+    }
+    //==============start edit category=====================
+    //==============start save edited category=====================
 
-}
+    public function update_song (Request $request,$id){
+      
+        $song =song::find($id);
+        $song->s_name =$request->get('name');
+        $song->s_author =$request->get('author');
+        $song->s_reldate =$request->get('reldate');
+        // $song->s_photo =$request->get('photo');
+        $song->save();
+        return redirect()->back()->with('success','Song Updated Successfully');
+    }
+    //==============start save edited category=====================
+    //==============start search songs=====================
+    public function search_song(Request $request){
+       $data = '%'.$request ->k . '%';
+       $songs =Song::where('s_name','like',$data)->get();
+       if(isset($songs)&& $songs->count() > 0){
+           
+        foreach($songs as $song){
+            echo" <p><a href='show-song-details/$song->id'>
+                $song->s_name
+            </a></p>";
+        }
+       }else{
+           echo 'Not Found ... ';
+       }
+    }
+    //==============endsearch songs=====================
+    //==============start song details from link in search bar =====================
+    public function song_details ($id){
+        // return $id ;
+        $song = song::find($id);
+        return view('admin.layout.songdetails' , compact('song'));
+    }
+    //==============end song details from link in search bar =====================
+
+} 

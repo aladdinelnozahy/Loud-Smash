@@ -34,6 +34,7 @@ Route::group(['prefix'=>'admin' , 'namespace' => 'Admin'], function(){
     Route::post ('/adduser','UserController@add_user')->name('add.user');
     Route::get ('/deleteuser/{id}','UserController@delete_user')->name('delete.user');
     Route::get ('/edituser/{id}','UserController@edit_user')->name('edit.user');
+    Route::post ('/updateuser/{id}','UserController@update_user')->name('update.user');
 
     // ============================ end user routes ===============================
 
@@ -44,6 +45,7 @@ Route::group(['prefix'=>'admin' , 'namespace' => 'Admin'], function(){
     Route::post ('/addartists','ArtistController@add_artist')->name('add.artist');
     Route::get ('/deleteartist/{id}','ArtistController@delete_artist')->name('delete.artist');
     Route::get ('/editartist/{id}','ArtistController@edit_artist')->name('edit.artist');
+    Route::post ('/updateartist/{id}','ArtistController@update_artist')->name('update.artist');
 
     // ============================ end artist routes ===============================
 
@@ -53,6 +55,7 @@ Route::group(['prefix'=>'admin' , 'namespace' => 'Admin'], function(){
     Route::post ('/addband','BandController@add_band')->name('add.band');
     Route::get ('/deleteband/{id}','BandController@delete_band')->name('delete.band');
     Route::get ('/editband/{id}','BandController@edit_band')->name('edit.band');
+    Route::post ('/updateband/{id}','BandController@update_Band')->name('update.band');
 
     // ============================ end band routes =================================
 
@@ -61,7 +64,11 @@ Route::group(['prefix'=>'admin' , 'namespace' => 'Admin'], function(){
     Route::get ('/songform','SongController@song_form')->name('song.form');
     Route::post ('/addsong','SongController@add_song')->name('add.song');
     Route::get ('/deletesong/{id}','SongController@delete_song')->name('delete.song');
-    Route::get ('/editsong/{id}','SongController@song_category')->name('edit.song');
+    Route::get ('/editsong/{id}','SongController@edit_song')->name('edit.song');
+    Route::post ('/updatesong/{id}','SongController@update_song')->name('update.song');
+    Route::post ('/search-songs','SongController@search_song')->name('search.song');
+    Route::get ('/show-song-details/{id}','SongController@song_details');
+    
 
     // ============================ end song routes =================================
 
@@ -71,7 +78,8 @@ Route::group(['prefix'=>'admin' , 'namespace' => 'Admin'], function(){
     Route::get ('/eventform','EventController@event_form')->name('event.form');
     Route::post ('/addevent','EventController@add_event')->name('add.event');
     Route::get ('/deleteevent/{id}','EventController@delete_event')->name('delete.event');
-    Route::get ('/editevent/{id}','EventController@event_category')->name('edit.event');
+    Route::get ('/editevent/{id}','EventController@edit_event')->name('edit.event');
+    Route::post ('/updateevent/{id}','EventController@update_event')->name('update.event');
 
     // ============================ end event routes ================================
 
@@ -82,6 +90,9 @@ Route::group(['prefix'=>'admin' , 'namespace' => 'Admin'], function(){
     Route::post ('/addcategory','CategoryController@add_category')->name('add.category');
     Route::get ('/deletecategory/{id}','CategoryController@delete_category')->name('delete.category');
     Route::get ('/editcategory/{id}','CategoryController@edit_category')->name('edit.category');
+    Route::post ('/updatecategory/{id}','CategoryController@update_category')->name('update.category');
+    Route::get ('/showsongs','CategoryController@show_category_songs')->name('show.songs');
+
     // ============================ end category routes =============================
 
 

@@ -83,20 +83,21 @@
       </div>
     </div>
     <!--   Core JS Files   -->
-    <script src="../assets/js/core/jquery.min.js"></script>
-    <script src="../assets/js/core/popper.min.js"></script>
-    <script src="../assets/js/core/bootstrap.min.js"></script>
-    <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <script src="../dashstyle/assets/js/core/jquery.min.js"></script>
+    <script src="../dashstyle/assets/js/core/popper.min.js"></script>
+    <script src="../dashstyle/assets/js/core/bootstrap.min.js"></script>
+    <script src="../dashstyle/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
     <!--  Google Maps Plugin    -->
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
     <!-- Chart JS -->
-    <script src="../assets/js/plugins/chartjs.min.js"></script>
+    <script src="../dashstyle/assets/js/plugins/chartjs.min.js"></script>
     <!--  Notifications Plugin    -->
-    <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+    <script src="../dashstyle/assets/js/plugins/bootstrap-notify.js"></script>
     <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../assets/js/black-dashboard.min.js?v=1.0.0" type="text/javascript"></script>
+    <script src="../dashstyle/assets/js/black-dashboard.min.js?v=1.0.0" type="text/javascript"></script>
     <!-- Black Dashboard DEMO methods, don't include it in your project! -->
-    <script src="../assets/demo/demo.js"></script>
+    <script src="../dashstyle/assets/demo/demo.js"></script>
+    
     <script>
       $(document).ready(function() {
         $().ready(function() {
@@ -214,6 +215,29 @@
         demo.initDashboardPageCharts();
 
       });
+  //  dashboard search 
+      $(document).ready(function(){
+      $('#search').keyup(function (){
+        var key =$(this).val();
+        if(key != ''){
+          // ajax code
+          $.ajax({
+            url :"{{ route('search.song') }}" ,
+            method :"POST",
+            data :{
+              '_token':"{{ csrf_token() }}",
+              'k':key
+            } ,
+            success :function(response){
+              $('.show-result').show();
+              $('.show-result').html(response);
+            }
+          });
+        }else{
+          $('.show-result').hide();
+        }
+      });
+    });
     </script>
 </body>
 

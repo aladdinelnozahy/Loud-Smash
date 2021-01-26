@@ -33,7 +33,7 @@
                             <td>{{$user ['u_phone'] }}</td>
                             <td> 
                                 <a href="" class="btn btn-success">Show songs</a>
-                                <a href="" class="btn btn-primary">Edit</a>
+                                <a href="{{ route('edit.user',$user->id) }}" class="btn btn-primary">Edit</a>
                                 <a href="{{ route('delete.user',$user->id ) }}" class="btn btn-danger">Delete</a>
                         </td>
                             @endforeach

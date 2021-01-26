@@ -16,7 +16,7 @@
                     <div class="col-md-6 px-md-1">
                         <div class="form-group">
                         <label>Username</label>
-                        <input type="text" name="username" class="form-control" >
+                        <input type="text" name="username" class="form-control" value="{{ old('username') }}">
                         @error('username')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -26,7 +26,7 @@
                     <div class="col-md-6 pr-md-1">
                         <div class="form-group">
                         <label> Name</label>
-                        <input type="text" name="name" class="form-control" >
+                        <input type="text" name="name" class="form-control" value="{{ old('name') }}">
                         </div>
 
                     </div>
@@ -34,18 +34,17 @@
                 <div class=" pl-md-1">
                     <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" name="email" class="form-control" value="{{ old('email') }}">
                     @error('email')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
-
-                    <input type="email" name="email" class="form-control" >
                     </div>
                 </div>
                
                 <div class=" pl-md-1">
                     <div class="form-group">
                     <label>Password</label>
-                    <input type="password" name="pass" class="form-control" >
+                    <input type="password" name="pass" class="form-control"  value="{{ old('password') }}">
                     @error('password')
                     <span class="text-danger">{{ $message }}</span>
                      @enderror
@@ -55,12 +54,12 @@
                 <div class=" pr-md-1">
                     <div class="form-group">
                     <label>Phone</label>
-                    <input type="text" name="phone" class="form-control" >
+                    <input type="text" name="phone" class="form-control" value="{{ old('phone') }}" >
                     </div>
                 </div>
                 <div class=" pr-md-1">
                     <label class="form-label" for="customFile">Upload user Photo</label>
-                    <input type="file" name="photo" class="form-control" id="customFile" />        
+                    <input type="file" name="photo" class="form-control" id="customFile" value="{{ old('photo') }}" >        
                 </div>
                 <div >
                     <button type="submit" class="btn btn-fill btn-primary">Save</button>

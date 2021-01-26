@@ -20,7 +20,7 @@
                 <div class=" px-md-1">
                     <div class="form-group">
                     <label>Song Name</label>
-                    <input type="text" name="name" class="form-control">
+                    <input type="text" name="name" class="form-control" value="{{ old('name') }}">
                     @error('name')
                         <span class="text-danger">{{ $message }}</span>
 
@@ -32,14 +32,14 @@
                 <div class=" pr-md-1">
                     <div class="form-group">
                     <label>Author </label>
-                    <input type="text" name="author" class="form-control" >
+                    <input type="text" name="author" class="form-control" value="{{ old('author') }}" >
                     </div>
                 </div>
 
                 <div class=" pr-md-1">
                     <div class="form-group">
                     <label>Release date </label>
-                    <input type="text" name="reldate" class="form-control" >
+                    <input type="text" name="reldate" class="form-control" value="{{ old('reldate') }}" >
                     </div>
                 </div>
 
@@ -56,7 +56,7 @@
 
                 <div class=" pr-md-1">
                     <label class="form-label" for="customFile">Upload Song Photo</label>
-                    <input type="file" name="photo" class="form-control" id="customFile" />        
+                    <input type="file" name="photo" class="form-control" id="customFile"  value="{{ old('photo') }}">        
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-fill btn-primary">Save</button>

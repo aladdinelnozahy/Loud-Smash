@@ -1,5 +1,5 @@
 @extends('admin.master')
-@section('title','Manage Categories')
+@section('title','Create Categories')
 @section('admincontent')
 
 <div class="row">
@@ -18,7 +18,7 @@
                     @csrf
                     <div class="form-group">
                     <label>Add category</label>
-                    <input type="text" name="name" class="form-control" >
+                    <input type="text" name="name" class="form-control" value="{{ old('name') }}" >
                     @error('name')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror

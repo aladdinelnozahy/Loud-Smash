@@ -21,19 +21,23 @@
                 <table class="table table-border title" style="color:white; text-align:center">
                     <tr>
                         <th>Name</th>
+                        <th>Memburs Number</th>
                         <th>Location</th>
+                        <th>Created Year </th>
                         <th>Bio</th>
-                        <th></th>
+                        <th>Edit</th>
                     </tr>
                     <tbody>
                         @foreach ($bands as $band)
                             <tr>
                                 <td>{{ $band ['b_name'] }}</td>
+                                <td>{{ $band ['b_memnum'] }}</td>
                                 <td>{{ $band ['b_location']}}</td>
+                                <td>{{ $band ['b_createdyear'] }}</td>
                                 <td>{{ $band ['b_bio'] }}</td>
                                 <td> 
                                     <a href="" class="btn btn-success">Show songs</a>
-                                    <a href="" class="btn btn-primary">Edit</a>
+                                    <a href="{{ route('edit.band',$band->id) }}" class="btn btn-primary">Edit</a>
                                     <a href="{{ route('delete.band',$band->id ) }}" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>

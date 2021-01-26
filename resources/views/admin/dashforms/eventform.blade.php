@@ -20,7 +20,7 @@
                 <div class=" px-md-1">
                     <div class="form-group">
                     <label>Event name</label>
-                    <input type="text" name="name" class="form-control" >
+                    <input type="text" name="name" class="form-control"  value="{{ old('name') }}">
                     @error('name')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -31,7 +31,7 @@
                 <div class="">
                     <div class="form-group">  
                     <label>Location</label>
-                    <input type="text" name="location" class="form-control" >
+                    <input type="text" name="location" class="form-control" value="{{ old('location') }}" >
                     @error('location')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -40,7 +40,7 @@
                 <div class="">
                     <div class="form-group">
                     <label>Date</label>
-                    <input type="text" name="name" class="form-control" >
+                    <input type="text" name="name" class="form-control" value="{{ old('date') }}" >
                     @error('date')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -49,12 +49,12 @@
                 <div class="">
                     <div class="form-group">
                     <label>Description</label>
-                    <textarea rows="4" name="description" cols="80" class="form-control" ></textarea>
+                    <textarea rows="4" name="description" cols="80" class="form-control" >{{ old('description') }}</textarea>
                     </div>
                 </div>
                 <div class=" pr-md-1">
                     <label class="form-label" for="customFile">Upload Event Photo</label>
-                    <input type="file" name="photo" class="form-control" id="customFile" />        
+                    <input type="file" name="photo" class="form-control" id="customFile"  value="{{ old('photo') }}">        
                 </div>
                 <button type="submit" class="btn btn-fill btn-primary">Save</button>
 

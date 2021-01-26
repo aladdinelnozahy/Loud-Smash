@@ -2,7 +2,11 @@
 @section('title','Admin Dashboard')
 @section('admincontent')
 
-
+<div class="container">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}" class="form-control">
+    <input type="text" id="search" class="form-control" placeholder="search Songs... ">
+    <div class="show-result">asd</div>
+</div>
 <div class="row">
     <div class="col-lg-4">
         <div class="card ">
@@ -68,3 +72,20 @@
 </div>
 
 @stop
+<script src="../dashstyle/assets/js/core/jquery.min.js"></script>
+<script src="../dashstyle/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+      $('#search').keyup(function (){
+        var key =$(this).val();
+        if(key != ''){
+          // ajax code
+          
+        }else{
+          $('.show-result').hide();
+
+        }
+      });
+    });
+</script>

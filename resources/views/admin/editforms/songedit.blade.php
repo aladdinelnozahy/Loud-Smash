@@ -1,12 +1,12 @@
 @extends('admin.master')
-@section('title','Add Song')
+@section('title','Edit Song')
 @section('admincontent')
 
 <div class="row">
     <div class="col-md-10">
         <div class="card">
             <div class="card-header">
-            <h5 class="title"> Add Songs</h5>
+            <h5 class="title"> Edit Songs</h5>
             </div>  
             @if (Session()->has('success'))
                 <div class="alert alert-success">
@@ -15,12 +15,12 @@
              @endif
             <div class="card-body">
          
-            <form action="{{ route('add.song') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('update.song',$song->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class=" px-md-1">
                     <div class="form-group">
                     <label>Song Name</label>
-                    <input type="text" name="name" class="form-control">
+                    <input type="text" name="name" class="form-control" value="{{ $song->s_name }}">
                     @error('name')
                         <span class="text-danger">{{ $message }}</span>
 
@@ -32,14 +32,14 @@
                 <div class=" pr-md-1">
                     <div class="form-group">
                     <label>Author </label>
-                    <input type="text" name="author" class="form-control" >
+                    <input type="text" name="author" class="form-control" value="{{ $song->s_author}}">
                     </div>
                 </div>
 
                 <div class=" pr-md-1">
                     <div class="form-group">
                     <label>Release date </label>
-                    <input type="text" name="reldate" class="form-control" >
+                    <input type="text" name="reldate" class="form-control" value="{{ $song->s_reldate }}" >
                     </div>
                 </div>
 
@@ -54,10 +54,10 @@
                      </div>
                 </div> --}}
 
-                <div class=" pr-md-1">
+                {{-- <div class=" pr-md-1">
                     <label class="form-label" for="customFile">Upload Song Photo</label>
-                    <input type="file" name="photo" class="form-control" id="customFile" />        
-                </div>
+                    <input type="file" name="photo" class="form-control" id="customFile" value="{{ $song->s_photo }}" />        
+                </div> --}}
                 <div class="card-footer">
                     <button type="submit" class="btn btn-fill btn-primary">Save</button>
             </form>

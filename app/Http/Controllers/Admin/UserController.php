@@ -37,7 +37,7 @@ class UserController extends Controller{
     ]);
 
     if($validator->fails()){
-        return redirect()->back()->withErrors($validator)->withInputs($request->all());
+        return redirect()->back()->withErrors($validator)->withInputs($request->flash());
     }
     //==============end form validation=====================
 
@@ -65,4 +65,32 @@ class UserController extends Controller{
         return redirect()->back()->with('deleted','deleted successfully');
      }
     //==============end delete user=====================
+    //==============start edit category=====================
+
+    public function edit_user($id){
+        $user = user::find($id);
+        $array=array('user'=>$user);
+        return view('admin.editforms.useredit',$array) ;
+    }
+    //==============start edit category=====================
+    
+    //==============start save edited category=====================
+
+    public function update_user (Request $request,$id){
+      
+        $user =user::find($id);
+        $user->u_username =$request->get('username');
+        $user->u_name =$request->get('name');
+        $user->u_email =$request->get('email');
+        $user->u_pass =$request->get('pass');
+        $user->u_phone =$request->get('phone');
+        // $category->u_photo =$request->get('photo');
+
+        $user->save();
+        return redirect()->back()->with('success','User Updated Successfully');
+    }
+    //==============start save edited category=====================
+
+
+    
 }

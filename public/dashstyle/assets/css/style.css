@@ -1,0 +1,11 @@
+/* search style */
+#search{
+    margin-bottom: 20px;
+}
+.show-result{
+    background-color: rgb(235, 231, 225);
+    padding: 10px;
+    margin: 10px 0;
+    color: black;
+    display:none;
+}

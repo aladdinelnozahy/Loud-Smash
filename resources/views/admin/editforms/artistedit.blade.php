@@ -15,13 +15,13 @@
              @endif
             <div class="card-body">
            
-            <form action="{{ route('add.artist') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('update.artist',$artist->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class=" pr-md-1">
                     <div class="form-group">
                     <label> Name</label>
-                    <input type="text" name="name" class="form-control" >
+                    <input type="text" name="name" class="form-control" value="{{ $artist->a_name }}">
                     @error('name')
                     <span class="text-danger">{{ $message }}</span>
 
@@ -32,14 +32,14 @@
                 <div class="col-md-12">
                     <div class="form-group">
                     <label>Age</label>
-                    <input type="text" name="age" class="form-control"  >
+                    <input type="text" name="age" class="form-control"  value="{{ $artist->a_age }}">
                     </div>
                 </div>
                 </div>
                 <div class=" pr-md-1">
                     <div class="form-group">
                     <label>About</label>
-                    <textarea name="about" class="form-control"></textarea>
+                    <textarea name="about" class="form-control" >{{ $artist->a_about }}</textarea>
                     @error('about')
                     <span class="text-danger">{{ $message }}</span>
 
@@ -47,10 +47,10 @@
 
                     </div>
                 </div>   
-                <div class=" pr-md-1">
+                {{-- <div class=" pr-md-1">
                     <label class="form-label" for="customFile">Upload Artist Photo</label>
-                    <input type="file" name="photo" class="form-control" id="customFile" />        
-                </div>
+                    <input type="file" name="photo" class="form-control" id="customFile" value="{{ $artist->a_photo }}"/>        
+                </div> --}}
                 <div class="card-footer">
                     <button type="submit" class="btn btn-fill btn-primary">Save</button>
                 </div>
