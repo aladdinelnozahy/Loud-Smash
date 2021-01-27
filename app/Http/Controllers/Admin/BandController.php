@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Band;
+use Illuminate\Http\Request;
+use App\Http\Requests\BandRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
 class BandController extends Controller
@@ -23,38 +24,14 @@ class BandController extends Controller
         return view('admin.dashforms.bandform');
     }
     //==============end form view==============
-    public function add_band(Request $request)
-    {
-  
+    public function add_band(BandRequest $request){
+      
+        //==============start photo validation==============
+        $filename =  $this->savePhoto($request->photo , 'photos/bands' );
 
-    //==============start form validation==============
-        $validator=validator::make(
-            $request->all(),
-            [
-            'name'=> 'required|unique:bands,b_name',
-            'bio'=>'required:bands,n_bio'
-        ],
-            [
-            'name.required'=>'band name is required',
-            'name.unique'=>'this band name is already exist'
-
-        ]
-        );
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInputs($request->flash());
-            //==============end form validation================
-
-            //==============start photo validation==============
-            $ext = $request->photo->getClientOriginalExtension();
-            $filename = time().'.'.$ext;
-            $path = 'photos/bands';
-            $request->photo->move($path, $filename);
-            //==============end photo validation==============
-        }
-  
-
+        //==============end photo validation==============
+    
         //==============start add new band==============
-
         Band::create([
             'b_name' => $request->name ,
             'b_memnum' => $request->memnum ,

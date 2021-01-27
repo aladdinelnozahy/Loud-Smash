@@ -36,7 +36,6 @@
                                 <td>{{ $band ['b_createdyear'] }}</td>
                                 <td>{{ $band ['b_bio'] }}</td>
                                 <td> 
-                                    <a href="" class="btn btn-success">Show songs</a>
                                     <a href="{{ route('edit.band',$band->id) }}" class="btn btn-primary">Edit</a>
                                     <a href="{{ route('delete.band',$band->id ) }}" class="btn btn-danger">Delete</a>
                                 </td>

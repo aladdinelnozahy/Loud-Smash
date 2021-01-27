@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
 use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
@@ -22,20 +23,8 @@ class CategoryController extends Controller
 
     //==============start add category=====================
 
-    public function add_category (Request $request){
-        // validation 
-       $validator= validator::make($request->all(),
-        [
-            'name'=>'required|unique:categories,c_name'
-        ],
-        [
-            'name.required'=> 'category name field is required' ,
-            'name.unique' => 'category already exist'
-        ]);
-        if ($validator -> fails()){
-            return redirect()->back()->withErrors($validator)->
-            withInputs($request->flash());
-        }
+    public function add_category (CategoryRequest $request){
+    
         Category::create([
             'name' => $request->name     
         ]);

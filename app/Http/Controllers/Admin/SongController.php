@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Song;
-use Illuminate\Auth\Events\Validated;
+use App\Traits\SongTrait;
+use Illuminate\Http\Request;
+use App\Http\Requests\SongRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
 
 class SongController extends Controller
 {
+    use SongTrait;
     //==============start data view =====================
 
     public $timestamps = false;
@@ -29,31 +31,15 @@ class SongController extends Controller
     }
     //==============end song form =====================
 
-    public function add_song (Request $request){
-
-
     //==============start form validation =====================
+    public function add_song (SongRequest $request){
 
-        $validator=Validator::make($request->all(),
-        [
-            'name'=>'required:songs,s_name'
-        ],
-        [
-            'name.required'=>'Song name is required'
-        ]);
-        if($validator->fails()){
-            return redirect()->back()->withErrors($validator)->withInputs($request->flash());
-        }
-
+     
     //==============end form validation =====================
     
-    //==============start photo validation ==================
-    $ext = $request->photo->getClientOriginalExtension();
-    $filename =time().'.'.$ext;
-    $path = 'photos/songs';
-    $request->photo->move($path,$filename);
-
-    //==============endadd photo validation ======================
+    //==============start upload photo  ==================
+      $filename =  $this->savePhoto($request->photo , 'photos/songs' );
+    //==============endadd upload photo  ======================
 
     
 

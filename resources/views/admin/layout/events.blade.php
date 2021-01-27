@@ -32,7 +32,6 @@
                             <td>{{$event ['e_location'] }}</td>
                             <td>{{$event ['e_date'] }}</td>
                             <td> 
-                                <a href="" class="btn btn-success">Show songs</a>
                                 <a href="{{ route('edit.event',$event->id ) }}" class="btn btn-primary">Edit</a>
                                 <a href="{{ route('delete.event',$event->id ) }}" class="btn btn-danger">Delete</a>
                             </td>

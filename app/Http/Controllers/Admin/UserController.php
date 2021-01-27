@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller{
@@ -20,20 +21,13 @@ class UserController extends Controller{
     }
     //==============end get data=====================
 
-    public function add_user (Request $request){
+    public function add_user (UserRequest $request){
     //==============start form validation=====================
 
     $validator=validator::make($request->all(),
     [
-        'username'=>'required|unique:users,u_username'  ,
-        'email'=>'required|unique:users,u_email' ,
-        'password'=>'required:users,u_pass'
     ],
     [
-        'username.required'=>'username is required',
-        'username.unique'=>'user name is already exist',
-        'email.required'=>'email address is required',
-        'password.required'=>'password is required'
     ]);
 
     if($validator->fails()){
@@ -51,10 +45,8 @@ class UserController extends Controller{
         ]);
         return redirect()->back()->with('success','user created successfully');
         //==============start photo validation=====================
-        $ext=$request->photo->getClientOriginalExtension();
-        $filename = time().'.'.$ext ;
-        $path='photos/users';
-        $request->photo->move($path,$filename);
+        $filename =  $this->savePhoto($request->photo , 'photos/users' );
+
         //==============start photo validation=====================
     }
 

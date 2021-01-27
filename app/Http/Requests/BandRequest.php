@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SongRequest extends FormRequest
+class BandRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,14 +24,16 @@ class SongRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required:songs,s_name'
+            'name'=> 'required|unique:bands,b_name',
+            'bio'=>'required:bands,n_bio'
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required'=>'Song name is required'
+            'name.required'=>'band name is required',
+            'name.unique'=>'this band name is already exist'
         ];
     }
 }

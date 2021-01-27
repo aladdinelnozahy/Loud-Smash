@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Artist;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ArtistRequest;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -19,29 +20,10 @@ class ArtistController extends Controller
     public function artist_form (){
         return view ('admin.dashforms.artistform');
     }
-    public function add_artist (Request $request){
-        //==============start validation=====================
-
-        $validator=validator::make($request->all(),
-        [
-            'name'=>'required|unique:artists,a_name',
-            'about'=>'required:artists,a_about'
-        ],
-        [   
-            'name.required'=>'Artist name is required',
-            'about.required'=>'tybe some thing about this artist'
-
-        ]);
-        if($validator->fails()){
-            return redirect()->back()->withErrors($validator)->withInputs($request->flash());
-        }
-        //==============end validation =====================
+    public function add_artist (ArtistRequest $request){
 
         //==============start photo validation=====================
-         $ext = $request->photo->getClientOriginalExtension();
-         $filename= time() .'.'. $ext;
-         $path= 'photos/artists';
-         $request->photo->move($path,$filename);
+       $filename = $this->savePhoto($request->photo , 'photos/artists' );
         //==============start photo validation=====================
 
 
