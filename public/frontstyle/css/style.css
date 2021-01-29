@@ -1,0 +1,18 @@
+.frontcat{
+    text-align: center;
+    color :black;
+    margin: auto;
+    padding: 20px;
+    /* background-color: transparent; */
+    background: -moz-linear-gradient(0deg, #691cff 0%, #f51cb0 100%);
+    background: -webkit-linear-gradient(0deg, #691cff 0%, #f51cb0 100%);
+    background: -ms-linear-gradient(0deg, #691cff 0%, #f51cb0 100%);
+
+}
+.show-songs{
+    display: none;
+    background-color: rgba(45, 44, 46, 0.363);
+    border: 1px black solid;
+    padding: 10px;
+
+}

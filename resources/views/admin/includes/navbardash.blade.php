@@ -34,14 +34,14 @@
                 </div>
                 </div> -->
             <li class="dropdown nav-item">
-            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+            {{-- <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                 <div class="notification d-none d-lg-block d-xl-block"></div>
                 <i class="tim-icons icon-sound-wave"></i>
                 <p class="d-lg-none">
                 New Notifications
                 </p>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
+            </a> --}}
+            {{-- <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
                 <li class="nav-link">
                 <a href="#" class="nav-item dropdown-item">Mike John responded to your email</a>
                 </li>
@@ -57,7 +57,7 @@
                 <li class="nav-link">
                 <a href="#" class="nav-item dropdown-item">Another one</a>
                 </li>
-            </ul>
+            </ul> --}}
             </li>
             <li class="dropdown nav-item">
             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
@@ -73,12 +73,10 @@
                 <li class="nav-link">
                 <a href="#" class="nav-item dropdown-item">Profile</a>
                 </li>
-                <li class="nav-link">
-                <a href="#" class="nav-item dropdown-item">Settings</a>
-                </li>
+               
                 <div class="dropdown-divider"></div>
                 <li class="nav-link">
-                <a href="#" class="nav-item dropdown-item">Log out</a>
+                <a href="{{ route('user.logout') }}" class="nav-item dropdown-item">Log out</a>
                 </li>
             </ul>
             </li>

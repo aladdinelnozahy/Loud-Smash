@@ -13,4 +13,11 @@ class Song extends Model
     public function categories(){
         return $this->belongsTo('App\Models\category','b_id','id');
     }
+
+    public function artists(){
+        return $this->belongsToMany('App\Models\Artist','artist_song',
+                                    'a_id','s_id',
+                                    'id','id');
+    }
+
 }

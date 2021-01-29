@@ -28,7 +28,8 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	
+<form action="{{ route('user.login') }}" method="post">
+	@csrf
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('loginstyle/images/bg-01.jpg');">
 			<div class="wrap-login100">
@@ -38,11 +39,15 @@
 					</span>
 
 					<span class="login100-form-title p-b-34 p-t-27">
-						Log in
+						Login
 					</span>
-
+					@if(Session()->has('failed'))
+						<div class="alert alert-danger">
+						{{ Session()->get('failed') }}
+						</div>
+					@endif
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="text" name="username" placeholder="Username">
+						<input class="input100" type="email" name="email" placeholder="Username">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
@@ -73,7 +78,8 @@
 			</div>
 		</div>
 	</div>
-	
+</form>
+
 
 	<div id="dropDownSelect1"></div>
 	

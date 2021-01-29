@@ -19,7 +19,7 @@
              @endif
 
             <div class="card-body">
-                <table class="table table-border title" style="color:white; text-align:center">
+                <table id="artists" class="table table-border title" style="color:white; text-align:center">
                     <tr>
                         <th>Name</th>
                         <th>Age</th>
@@ -37,6 +37,7 @@
                             <td>{{$artist ['a_about'] }}</td>
                             <td>{{$artist ['a_photo'] }}</td>
                             <td> 
+                                <a href="{{ route('show.artist.songs',$artist->id) }}" class="btn btn-success">Show songs</a>
                                 <a href="{{ route('edit.artist',$artist->id) }}" class="btn btn-primary">Edit</a>
                                 <a href="{{ route('delete.artist',$artist->id ) }}" class="btn btn-danger">Delete</a>
                         </td>
@@ -44,7 +45,7 @@
 
                         </tr>
                     </tbody>
-
+                    {{ $artists->links() }}
                 </table>
 
 

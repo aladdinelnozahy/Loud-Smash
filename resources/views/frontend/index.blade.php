@@ -3,6 +3,24 @@
 
 @section('content')
 <!-- Start Banner Area -->
+<div class="frontcat">
+    <h2 class="masthead-heading text-uppercase mb-0"> select your Category</h2>
+    @php
+        $categories =App\Models\Category::select('id','c_name')->get()
+    @endphp
+
+        <input type="hidden " name="_token" value="{{ csrf_token() }}" class="form-control">
+        <select id="category"  class=" form-control"  >
+
+            <option > All Categories</option>
+
+            @foreach ($categories as $cat )
+            <option value="{{$cat->id}}" > {{ $cat->c_name }}</option>
+            @endforeach
+        </select>
+        <div class="show-songs" ></div>
+
+</div>
 <section class="banner-area relative" id="home">
     <div class="container">
         <div class="row fullscreen align-items-center justify-content-center" style="height: 735px;">
@@ -40,32 +58,45 @@
 <!-- End quote Area -->
 
 <!-- Start feature Area -->
-<!-- <section class="feature-area pb-100" id="feature">
+<section class="feature-area pb-100" id="feature">
     <div class="container">
+        @foreach($artists as $artist)
+        
         <div class="row">
             <div class="col-lg-4 col-md-4 no-padding single-img">
-                    <img src="img/f1.jpg" class="image img-fluid">
+                    <img src="public/photos/artists/{{ $artist->a_photo }}" class="image img-fluid" alt="{{ $artist->a_name }}">
+                    <div class="middle">
+                    <h2 class="text-uppercase text-white">Concert Toronto</h2>
+                    <p>{{ $artist->namde }}</p>
+                    </div>
+            </div>
+            @endforeach
+            {{-- <div class="col-lg-4 col-md-4 no-padding single-img">
+                    <img src="frontstyle/img/f2.jpg" class="image img-fluid">
                     <div class="middle">
                     <h2 class="text-uppercase text-white">Concert Toronto</h2>
                     <p>Need concert details</p>
                     </div>
             </div>
             <div class="col-lg-4 col-md-4 no-padding single-img">
-                    <img src="img/f2.jpg" class="image img-fluid">
-                    <div class="middle">
-                    <h2 class="text-uppercase text-white">Concert Toronto</h2>
-                    <p>Need concert details</p>
-                    </div>
-            </div>
-            <div class="col-lg-4 col-md-4 no-padding single-img">
-                    <img src="img/f3.jpg" class="image img-fluid">
+                    <img src="frontstyle/img/f3.jpg" class="image img-fluid">
                     <div class="middle">
                     <h2 class="text-uppercase text-white">Concert Toronto</h2>
                     <p>Need concert details</p>
                     </div>
             </div>
             <div class="col-lg-6 col-sm-12 no-padding single-img">
-                    <img src="img/f4.jpg" class="image img-fluid">
+                    <img src="frontstyle/img/f4.jpg" class="image img-fluid">
+                    <div class="middle2">
+                    <a href="https://www.youtube.com/watch?v=L3V7LKYPIUQ" class="play-btn">
+                        <img class="vdo-icon" src="frontstyle/img/video-btn.png" alt="">
+                    </a>
+                    <h2 class="text-uppercase text-white">Being unique is the preference</h2>
+                    <p>Youtube video will appear in popover</p>
+                    </div>
+            </div>
+            <div class="col-lg-6 col-sm-12 no-padding single-img">
+                    <img src="frontstyle/img/f5.jpg" class="image img-fluid">
                     <div class="middle2">
                     <a href="https://www.youtube.com/watch?v=L3V7LKYPIUQ" class="play-btn">
                         <img class="vdo-icon" src="img/video-btn.png" alt="">
@@ -73,17 +104,7 @@
                     <h2 class="text-uppercase text-white">Being unique is the preference</h2>
                     <p>Youtube video will appear in popover</p>
                     </div>
-            </div>
-            <div class="col-lg-6 col-sm-12 no-padding single-img">
-                    <img src="img/f5.jpg" class="image img-fluid">
-                    <div class="middle2">
-                    <a href="https://www.youtube.com/watch?v=L3V7LKYPIUQ" class="play-btn">
-                        <img class="vdo-icon" src="img/video-btn.png" alt="">
-                    </a>
-                    <h2 class="text-uppercase text-white">Being unique is the preference</h2>
-                    <p>Youtube video will appear in popover</p>
-                    </div>
-            </div>
+            </div> --}}
 
         </div>
     </div>
@@ -91,13 +112,13 @@
 <!-- End feature Area -->
 
 <!-- Start service Area -->
-<section class="service-area pt-100 pb-100" data-parallax="scroll" data-image-src="img/service-bg.jpg">
+<section class="service-area pt-100 pb-100" data-parallax="scroll" data-image-src="frontstyle/img/service-bg.jpg">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
                 <div class="single-service d-flex justify-content-between align-items-top">
                     <div class="icon">
-                        <img src="img/s1.png" alt="">
+                        <img src="frontstyle/img/s1.png" alt="">
                     </div>
                     <div class="desc">
                         <h4 class="text-uppercase">DJ Party on the house</h4>
@@ -108,7 +129,7 @@
                 </div>
                 <div class="single-service d-flex justify-content-between align-items-top">
                     <div class="icon">
-                        <img src="img/s2.png" alt="">
+                        <img src="frontstyle/img/s2.png" alt="">
                     </div>
                     <div class="desc">
                         <h4 class="text-uppercase">Concert at its best</h4>
@@ -119,7 +140,7 @@
                 </div>
                 <div class="single-service d-flex justify-content-between align-items-top">
                     <div class="icon">
-                        <img src="img/s3.png" alt="">
+                        <img src="frontstyle/img/s3.png" alt="">
                     </div>
                     <div class="desc">
                         <h4 class="text-uppercase">playing Music Videos</h4>
@@ -142,7 +163,7 @@
             <div class="active-member-carousel">
                 <div class="single-member item">
                         <div class="member-info d-flex flex-row justify-content-center">
-                            <img class="" style="width:100px;height: 100%;" src="img/m1.jpg" alt="">
+                            <img class="" style="width:100px;height: 100%;" src="frontstyle/img/m1.jpg" alt="">
                             <div class="details">
                                 <h4 class="text-white text-uppercase">Fredric Elsa</h4>
                                 <p>Lead Vocalist</p>
@@ -155,7 +176,7 @@
                 </div>
                 <div class="single-member item">
                         <div class="member-info d-flex flex-row justify-content-center">
-                            <img class="" style="width:100px;height: 100%;" src="img/m1.jpg" alt="">
+                            <img class="" style="width:100px;height: 100%;" src="frontstyle/img/m1.jpg" alt="">
                             <div class="details">
                                 <h4 class="text-white text-uppercase">Fredric Elsa</h4>
                                 <p>Lead Vocalist</p>
@@ -180,7 +201,7 @@
     <div class="container-fluid">
         <div class="row  d-flex justify-content-start align-items-center">
             <div class="col-lg-6 col-md-12 no-padding">
-                <img class="img-fluid" src="img/about-img.png" alt="">
+                <img class="img-fluid" src="frontstyle/img/about-img.png" alt="">
             </div>
             <div class="about-details col-lg-4 col-md-12">
                 <h2>
@@ -235,3 +256,4 @@
 </section>
 <!-- End contact Area -->
 @stop
+

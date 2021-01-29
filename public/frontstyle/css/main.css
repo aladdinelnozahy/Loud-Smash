@@ -1976,7 +1976,7 @@ nav a:hover {
   background: -moz-linear-gradient(0deg, #691cff 0%, #f51cb0 100%);
   background: -webkit-linear-gradient(0deg, #691cff 0%, #f51cb0 100%);
   background: -ms-linear-gradient(0deg, #691cff 0%, #f51cb0 100%);
-  /* -webkit-background-clip: text; */
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 

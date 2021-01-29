@@ -18,4 +18,8 @@
   <link href="{{asset('../dashstyle/assets/css/style.css')}}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{asset('../dashstyle/assets/demo/demo.css')}}" rel="stylesheet" />
+  {{-- <!-- DATA TABLES CDN-->
+  <link href="  https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="  https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css" rel="stylesheet" /> --}}
+
 </head>

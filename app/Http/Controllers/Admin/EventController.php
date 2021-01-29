@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 class EventController extends Controller
 {
-    public $timestamps = false;
+    // public $timestamps = false;
 
     public function event (){
         $events = Event::get();

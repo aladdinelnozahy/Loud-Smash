@@ -31,17 +31,11 @@ class SongController extends Controller
     }
     //==============end song form =====================
 
-    //==============start form validation =====================
     public function add_song (SongRequest $request){
-
-     
-    //==============end form validation =====================
-    
+        
     //==============start upload photo  ==================
       $filename =  $this->savePhoto($request->photo , 'photos/songs' );
     //==============endadd upload photo  ======================
-
-    
 
     //==============start add new song =====================
 

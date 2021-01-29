@@ -2,18 +2,31 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Notifications\UserCreated;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Validator;   
+use Illuminate\Support\Facades\Notification;
+
 
 class UserController extends Controller{
-    
+
     //==============start get data=====================
 
     public function user (){
         $users =User::get();
+        foreach($users as $user){
+            // if($user->u_role ==1){
+            //     $user->u_role = 'Super Admin';
+            // }else {
+            //     $user->u_role ='admin';
+            // }
+            $user->u_role = $user->u_role == 1 ? 'Super Admin' : 'Admin';
+
+        }
+
         return view ('admin.layout.users', compact('users'));
     }
     public function user_form (){
@@ -24,25 +37,21 @@ class UserController extends Controller{
     public function add_user (UserRequest $request){
     //==============start form validation=====================
 
-    $validator=validator::make($request->all(),
-    [
-    ],
-    [
-    ]);
+    $validator=validator::make($request->all() );
 
     if($validator->fails()){
         return redirect()->back()->withErrors($validator)->withInputs($request->flash());
     }
     //==============end form validation=====================
 
-        User::create([
-            'u_username' => 'username' , 
-            'u_name' => 'name',
-            'u_email' => 'email',
-            'u_phone' => 'phone',
-            'u_pass' => 'pass',
-            'r_id' => '1'
+        $user =User::create([
+            'u_username' => $request->username ,
+            'u_name' =>$request->name,
+            'u_email' =>$request->phone,
+            'u_pass' =>$request->password,
+            // 'r_id' =>$request->reservation
         ]);
+        Notification::send($user,new UserCreated($user));
         return redirect()->back()->with('success','user created successfully');
         //==============start photo validation=====================
         $filename =  $this->savePhoto($request->photo , 'photos/users' );
@@ -65,11 +74,11 @@ class UserController extends Controller{
         return view('admin.editforms.useredit',$array) ;
     }
     //==============start edit category=====================
-    
+
     //==============start save edited category=====================
 
     public function update_user (Request $request,$id){
-      
+
         $user =user::find($id);
         $user->u_username =$request->get('username');
         $user->u_name =$request->get('name');
@@ -84,5 +93,5 @@ class UserController extends Controller{
     //==============start save edited category=====================
 
 
-    
+
 }

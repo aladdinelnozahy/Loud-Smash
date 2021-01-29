@@ -1,21 +1,19 @@
 <div class="sidebar">
-  
+
   <div class="sidebar-wrapper">
     <div class="logo">
-      <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-        CT
-      </a>
+      
       <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-        Creative Tim
+       Welcome ,{{ Session()->get('u_username') }}
       </a>
     </div>
     <ul class="nav">
-      <li class="active ">
+      {{-- <li class="active ">
         <a href="{{Route('admin.dashboard')}}">
           <i class="tim-icons icon-chart-pie-36"></i>
           <span>Dashboard</span>
           <span class="badge badge-info"></span>
-
+ 
         </a>
       </li>
       <li>
@@ -24,7 +22,7 @@
           <span>Users</span>
           <span class="badge badge-info">{{ App\Models\User::count() }}</span>
         </a>
-      </li>
+      </li> --}}
       <li>
         <a href="{{Route('admin.artist')}}">
           <i class="tim-icons icon-pin"></i>
@@ -51,6 +49,13 @@
           <i class="tim-icons icon-puzzle-10"></i>
           <span>Events</span>
           <span class="badge badge-info">{{ App\Models\Event::count() }}</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{Route('admin.reservation')}}">
+          <i class="tim-icons icon-puzzle-10"></i>
+          <span>Reservation</span>
+          <span class="badge badge-info">{{ App\Models\Reservation::count() }}</span>
         </a>
       </li>
       <li>

@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+// add to admin
+define('PAGINATE',2); 
 /*
-|--------------------------------------------------------------------------
+|-------------------------------- ------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
@@ -13,15 +14,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'FrontEnd\SiteController@index')->name('site.home');
+Route::group(['namespace' => 'FrontEnd'] , function(){
+    Route::get('/', 'SiteController@index')->name('site.home');
 
-// admin routes
+    Route::post('/show-songs', 'SiteController@show_songs')->name('frontshow.songs');
+    // Route::get ('/front-showsongs','CategoryController@show_category_songs')->name('show.songs');
+
+
+});
+
+// ===----====-----===---===---===admin routes===---===---===---===---
 Route::group(['prefix'=>'admin' , 'namespace' => 'Admin'], function(){
     
     // ============================ begin login routes ============================
     Route::get('/', 'AdminController@login')->name('admin.login');
+    Route::post('/login', 'AdminController@user_login')->name('user.login');
+    Route::get('/logout', 'AdminController@user_logout')->name('user.logout');
     // ============================ end user routes ==============================
-
+});
+Route::group(['prefix'=>'admin' , 'namespace' => 'Admin' ,'middleware'=>'prevent'], function(){
 
     // ============================ begin dashboard routes =========================
     Route::get('/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
@@ -37,7 +48,17 @@ Route::group(['prefix'=>'admin' , 'namespace' => 'Admin'], function(){
     Route::post ('/updateuser/{id}','UserController@update_user')->name('update.user');
 
     // ============================ end user routes ===============================
+    // ============================ begin reservation routes =========================
+    Route::get('/reservation', 'ReservationController@reservation')->name('admin.reservation');
+    Route::get ('/reservationform','ReservationController@reservation_form')->name('reservation.form');
+    Route::post ('/addreservation','ReservationController@add_reservation')->name('add.reservation');
+    Route::get ('/deletereservation/{id}','ReservationController@delete_reservation')->name('delete.reservation');
+    Route::get ('/editreservation/{id}','ReservationController@edit_reservation')->name('edit.reservation');
+    Route::post ('/updatereservation/{id}','ReservationController@update_reservation')->name('update.reservation');
 
+    // ============================ end reservation routes ===========================
+  
+  
 
     // ============================ begin artist routes =============================
     Route::get ('/artists','ArtistController@show_artist')->name('admin.artist');
@@ -46,6 +67,11 @@ Route::group(['prefix'=>'admin' , 'namespace' => 'Admin'], function(){
     Route::get ('/deleteartist/{id}','ArtistController@delete_artist')->name('delete.artist');
     Route::get ('/editartist/{id}','ArtistController@edit_artist')->name('edit.artist');
     Route::post ('/updateartist/{id}','ArtistController@update_artist')->name('update.artist');
+
+    Route::get ('/show-artist-songs/{id}','ArtistController@show_artist_songs')->name('show.artist.songs');
+    Route::post ('/save-songs-to-artist','ArtistController@save_artist_songs')->name('save.artist.songs');
+    
+    // Route::get ('/artist-songs','ArtistController@artist_songs')->name('artist.songs');
 
     // ============================ end artist routes ===============================
 
