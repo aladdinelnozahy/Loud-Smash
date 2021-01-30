@@ -27,15 +27,16 @@
                             <td>{{$song ['s_name']}}</td>
                             <td>{{$song ['s_author'] }}</td>
                             <td>{{$song ['s_reldate'] }}</td>
-                            <td>{{$song ['b_id'] }}</td>
-                            {{-- <td>
+                            <td>{{$song ['s_photo'] }}</td>
+                            <td>{{$song ->category->c_name }} </td>
+                            <td>
                                 @if ($song->photo == NULL)
                                 {{ 'notAvailable' }}
-                                @else 
-                                <img width="60" height="60" 
-                                src="/photos/songs/{{ $song->photo }}">
-                            </td> --}}
-                            <td> 
+                                @else
+                                <img width="60" height="60"
+                                src="/photos/songs/{{ $song->s_photo }}">
+                            </td>
+                            <td>
                                 <a href="{{ route('edit.song',$song->id) }}" class="btn btn-primary">Edit</a>
                                 <a href="{{ route('delete.song',$song->id ) }}" class="btn btn-danger">Delete</a>
                         </td>
@@ -48,7 +49,7 @@
         </div>
     </div>
 </div>
-   
+
 
 
 @stop

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Notifications;
- 
+
 use App\Models\User ;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -44,8 +44,8 @@ class UserCreated extends Notification
     public function toMail($notifiable)
     {
 
-        $subject = sprintf('%s:Your Account has been created %s', config('app.name'));
-        $greeting =sprintf('%s Hello', $notifiable->name);
+        $subject = sprintf('%s:Your Account has been created', config('app.name'));
+        $greeting =sprintf('%s Hello', $notifiable->u_username);
         return (new MailMessage)
                     ->subject($subject)
                     ->greeting($greeting)

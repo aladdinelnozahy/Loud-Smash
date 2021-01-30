@@ -7,14 +7,14 @@
         <div class="card">
             <div class="card-header">
             <h5 class="title"> Edit Songs</h5>
-            </div>  
+            </div>
             @if (Session()->has('success'))
                 <div class="alert alert-success">
                     {{ Session()->get('success') }}
                 </div>
              @endif
             <div class="card-body">
-         
+
             <form action="{{ route('update.song',$song->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class=" px-md-1">
@@ -28,7 +28,7 @@
 
                     </div>
                 </div>
-             
+
                 <div class=" pr-md-1">
                     <div class="form-group">
                     <label>Author </label>
@@ -43,30 +43,31 @@
                     </div>
                 </div>
 
-                {{-- <div class=" pr-md-1">
+                <div class=" pr-md-1">
                     <div class="form-group">
                     <label>Category </label>
-                    <select   name="category" >
-                        @foreach ($songs as $song)
-                        <option >  {{$songs->b_id}}</option>
+                    <select class="form-control"  name="category" >
+                        @foreach ($cat as $cat)
+                        <option class="option-color ">  {{$cat->c_name}}</option>
                         @endforeach
                     </select>
                      </div>
-                </div> --}}
+                </div>
 
-                {{-- <div class=" pr-md-1">
-                    <label class="form-label" for="customFile">Upload Song Photo</label>
-                    <input type="file" name="photo" class="form-control" id="customFile" value="{{ $song->s_photo }}" />        
-                </div> --}}
+                <div class=" pr-md-1">
+                    <label class="form-label" for="customFile">Photo</label>
+                    <img src="/photos/songs/{{ $song->s_photo }}" class="img-size" alt="">
+                    <input type="file" name="photo" class="form-control" id="customFile"  />
+                </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-fill btn-primary">Save</button>
             </form>
             </div>
-            
+
         </div>
     </div>
     </div>
-   
+
 
 
 @stop

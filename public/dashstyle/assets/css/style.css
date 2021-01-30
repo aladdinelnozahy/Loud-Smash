@@ -9,6 +9,9 @@
     color: black;
     display:none;
 }
-/* .option-color{
+.option-color{
     color: black;
-} */
+}
+.img-size{
+    width: 100px;
+}

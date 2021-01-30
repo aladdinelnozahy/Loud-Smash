@@ -12,9 +12,9 @@
                 <div class="alert alert-success">
                     {{ Session()->get('success') }}
                 </div>
-             @endif  
+             @endif
             <div class="card-body">
-          
+
             <form action="{{ route('update.band',$band->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class=" pr-md-1">
@@ -53,11 +53,12 @@
                      @enderror
 
                     </div>
-                
-                <div class=" pr-md-1">
-                    <label class="form-label" for="customFile">Upload Band Photo</label>
-                    <input type="file" name="photo" class="form-control" id="customFile" value="{{ $band->b_photo }}"/>        
-                </div>
+
+                    <div class=" pr-md-1">
+                        <label class="form-label" for="customFile">Photo</label>
+                        <img src="/photos/bands/{{ $band->b_photo }}" class="img-size" alt="">
+                        <input type="file" name="photo" class="form-control" id="customFile"  />
+                    </div>
                 <button type="submit" class="btn btn-fill btn-primary">Save</button>
 
             </form>

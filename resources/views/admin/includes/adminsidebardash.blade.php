@@ -2,10 +2,10 @@
 
   <div class="sidebar-wrapper">
     <div class="logo">
-      
-      <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+
+      <div class="simple-text logo-normal">
        Welcome ,{{ Session()->get('u_username') }}
-      </a>
+      </div>
     </div>
     <ul class="nav">
       <li class="active ">
@@ -14,7 +14,7 @@
           <span>Dashboard</span>
           <span class="badge badge-info"></span>
 
-        </a> 
+        </a>
       </li>
       <li>
         <a href="{{Route('create.user')}}">
@@ -65,7 +65,7 @@
           <span class="badge badge-info">{{ App\Models\Category::count() }}</span>
         </a>
       </li>
-      
+
     </ul>
   </div>
 </div>

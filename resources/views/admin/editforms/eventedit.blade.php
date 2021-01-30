@@ -14,7 +14,7 @@
                 </div>
              @endif
             <div class="card-body">
-         
+
             <form action="{{ route('update.event',$event->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class=" px-md-1">
@@ -26,10 +26,10 @@
                     @enderror
                     </div>
                 </div>
-            
-           
+
+
                 <div class="">
-                    <div class="form-group">  
+                    <div class="form-group">
                     <label>Location</label>
                     <input type="text" name="location" class="form-control" value="{{ $event->e_location }}">
                     @error('location')
@@ -49,15 +49,15 @@
                 <div class="">
                     <div class="form-group">
                     <label>Description</label>
-                    <textarea rows="4" name="description" cols="80" class="form-control"   >{{ $event->e_description }}</textarea>
+                    <textarea rows="4" name="description" cols="80" class="form-control">{{ $event->e_description }}</textarea>
                     </div>
                 </div>
                 {{-- <div class=" pr-md-1">
                     <label class="form-label" for="customFile">Upload Event Photo</label>
-                    <input type="file" name="photo" class="form-control" id="customFile"  value="{{ $event->e_photo }}" />        
+                    <input type="file" name="photo" class="form-control" id="customFile"  value="{{ $event->e_photo }}" />
                 </div> --}}
                 <button type="submit" class="btn btn-fill btn-primary">Save</button>
 
             </form>
-         
+
 @stop

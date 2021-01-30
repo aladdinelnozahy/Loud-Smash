@@ -23,6 +23,7 @@
                         <th>Name</th>
                         <th>Author</th>
                         <th>Release Date</th>
+                        <th>Photo</th>
                         <th>category</th>
                         <th>Edit</th>
                     </tr>
@@ -33,8 +34,9 @@
                             <td>{{$song ['s_name']}}</td>
                             <td>{{$song ['s_author'] }}</td>
                             <td>{{$song ['s_reldate'] }}</td>
-                            <td>{{$song ['b_id'] }}</td>
-                            <td> 
+                            <td><img src="{{$song->getPhoto() }}" class="img-size" alt="Song Photo"></td>
+                            <td>{{$song ->category->c_name }}</td>
+                            <td>
                                 <a href="{{ route('edit.song',$song->id) }}" class="btn btn-primary">Edit</a>
                                 <a href="{{ route('delete.song',$song->id ) }}" class="btn btn-danger">Delete</a>
                         </td>
@@ -47,7 +49,7 @@
         </div>
     </div>
 </div>
-   
+
 
 
 @stop

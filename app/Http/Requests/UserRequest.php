@@ -26,7 +26,8 @@ class UserRequest extends FormRequest
         return [
             'username'=>'required|unique:users,u_username'  ,
             'email'=>'required|unique:users,u_email' ,
-            'password'=>'required:users,u_pass'
+            // 'password'=>'required:users,u_pass'
+            'photo'=>'required:users,u_photo'
             ];
     }
     public function messages()
@@ -35,7 +36,8 @@ class UserRequest extends FormRequest
             'username.required'=>'username is required',
             'username.unique'=>'user name is already exist',
             'email.required'=>'email address is required',
-            'password.required'=>'password is required'
+            // 'password.required'=>'password   is required'
+            'photo.required'=> 'photo is required'
             ];
     }
 }

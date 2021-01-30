@@ -25,6 +25,7 @@
                         <th>Location</th>
                         <th>Created Year </th>
                         <th>Bio</th>
+                        <th>Photo</th>
                         <th>Edit</th>
                     </tr>
                     <tbody>
@@ -35,7 +36,9 @@
                                 <td>{{ $band ['b_location']}}</td>
                                 <td>{{ $band ['b_createdyear'] }}</td>
                                 <td>{{ $band ['b_bio'] }}</td>
-                                <td> 
+                                <td><img src="{{$band->getPhoto() }}" class="img-size" alt="Song Photo"></td>
+
+                                <td>
                                     <a href="{{ route('edit.band',$band->id) }}" class="btn btn-primary">Edit</a>
                                     <a href="{{ route('delete.band',$band->id ) }}" class="btn btn-danger">Delete</a>
                                 </td>
@@ -43,7 +46,8 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div> 
+
+            </div>
 
 
 @stop

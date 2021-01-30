@@ -21,9 +21,9 @@ class EventController extends Controller
     }
 
     public function add_event (EventRequest $request){
-    
+    // dd($request->date, $request->name, $request);
     //==============start photo validation====================
-    $filename =  $this->savePhoto($request->photo , 'photos/events' );
+    // $filename =  $this->savePhoto($request->photo , 'photos/events' );
 
 
     //==============start photo validation====================
@@ -34,8 +34,8 @@ class EventController extends Controller
             'e_name' => $request->name ,
             'e_location' => $request->location ,
             'e_description' => $request->description ,
-            'e_date' => $request->date 
-            
+            'e_date' => $request->date
+
         ]);
         return redirect()->back()->with('success','event created successfully');
     }
@@ -61,7 +61,7 @@ class EventController extends Controller
     //==============start save edited event=====================
 
     public function update_event (Request $request,$id){
-      
+
         $event =event::find($id);
         $event->e_name =$request->get('name');
         $event->e_location =$request->get('location');

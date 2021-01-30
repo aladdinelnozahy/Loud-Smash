@@ -2,9 +2,9 @@
 
   <div class="sidebar-wrapper">
     <div class="logo">
-      
+
       <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-       Welcome ,{{ Session()->get('u_username') }}
+       Welcome ,{{ Session()->get('u_name') }}
       </a>
     </div>
     <ul class="nav">
@@ -13,7 +13,7 @@
           <i class="tim-icons icon-chart-pie-36"></i>
           <span>Dashboard</span>
           <span class="badge badge-info"></span>
- 
+
         </a>
       </li>
       <li>
@@ -65,7 +65,7 @@
           <span class="badge badge-info">{{ App\Models\Category::count() }}</span>
         </a>
       </li>
-      
+
     </ul>
   </div>
 </div>

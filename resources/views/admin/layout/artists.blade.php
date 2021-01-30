@@ -35,8 +35,8 @@
                             <td>{{$artist ['a_name']}}</td>
                             <td>{{$artist ['a_age'] }}</td>
                             <td>{{$artist ['a_about'] }}</td>
-                            <td>{{$artist ['a_photo'] }}</td>
-                            <td> 
+                            <td><img src="{{$artist->getPhoto() }}" class="img-size" alt="Song Photo"></td>
+                            <td>
                                 <a href="{{ route('show.artist.songs',$artist->id) }}" class="btn btn-success">Show songs</a>
                                 <a href="{{ route('edit.artist',$artist->id) }}" class="btn btn-primary">Edit</a>
                                 <a href="{{ route('delete.artist',$artist->id ) }}" class="btn btn-danger">Delete</a>
@@ -45,12 +45,12 @@
 
                         </tr>
                     </tbody>
-                    {{ $artists->links() }}
                 </table>
+                {{ $artists->links() }}
 
 
 
-                
+
 
             </div>
         </div>

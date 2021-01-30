@@ -14,7 +14,7 @@
                 </div>
              @endif
             <div class="card-body">
-           
+
             <form action="{{ route('update.artist',$artist->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
@@ -46,17 +46,18 @@
                     @enderror
 
                     </div>
-                </div>   
-                {{-- <div class=" pr-md-1">
-                    <label class="form-label" for="customFile">Upload Artist Photo</label>
-                    <input type="file" name="photo" class="form-control" id="customFile" value="{{ $artist->a_photo }}"/>        
-                </div> --}}
+                </div>
+                <div class=" pr-md-1">
+                    <label class="form-label" for="customFile">Photo</label>
+                    <img src="/photos/artists/{{ $artist->a_photo }}" class="img-size" alt="">
+                    <input type="file" name="photo" class="form-control" id="customFile"  />
+                </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-fill btn-primary">Save</button>
                 </div>
             </form>
             </div>
-            
+
     </div>
 </div>
 </div>

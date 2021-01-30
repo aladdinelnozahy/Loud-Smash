@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Artist;
 use App\Models\Song;
+use App\Traits\PhotosTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ArtistRequest;
@@ -11,20 +12,24 @@ use App\Http\Requests\ArtistRequest;
 
 class ArtistController extends Controller
 {
+    use PhotosTrait;
     public $timestamps = false;
 
     public function show_artist (){
         $artists=Artist::paginate(PAGINATE);
+        $test = Artist::find('1');
+        // dd($test->events()->first() );
         return view ('admin.layout.artists',compact('artists'));
+
     }
-    
+
     public function artist_form (){
         return view ('admin.dashforms.artistform');
     }
     public function add_artist (ArtistRequest $request){
-
+        // dd($request);
         //==============start photo validation=====================
-       $filename = $this->savePhoto($request->photo , 'photos/artists' );
+       $filename = $this->savePhoto($request->photo , Artist::$photodirectory );
         //==============start photo validation=====================
 
 
@@ -33,12 +38,12 @@ class ArtistController extends Controller
             'a_name' => $request ->name ,
             'a_age'=> $request ->age ,
             'a_about' => $request ->about,
-            'a_photo'=>$request->photo
+            'a_photo'=>$filename
         ]);
         return redirect()->back()->with('success','artist created successfully');
         //==============end add new artist=====================
     }
-    
+
 
         //==============start delete user=====================
         public function delete_artist ($id){
@@ -52,18 +57,26 @@ class ArtistController extends Controller
         public function edit_artist($id){
             $artist = artist::find($id);
             $array=array('artist'=>$artist);
-            return view('admin.editforms.artistedit',$array) ;
+            if(!$artist){
+                return redirect()->route('admin.artists');
+            }else{
+                return view('admin.editforms.artistedit', $array, compact('artist')) ;
+            }
         }
         //==============start edit category=====================
         //==============start save edited artist=====================
 
         public function update_artist (Request $request,$id){
-      
+
             $artist =artist::find($id);
             $artist->a_name =$request->get('name');
             $artist->a_age =$request->get('age');
             $artist->a_about =$request->get('about');
-            // $artist->photo =$request->get('photo');
+            if ($request->photo) {
+                $filename =$this->savePhoto($request->photo, Artist::$photodirectory);
+                $artist->a_photo =$filename ;
+            }
+
             $artist->save();
             return redirect()->back()->with('success','Category Updated Successfully');
         }

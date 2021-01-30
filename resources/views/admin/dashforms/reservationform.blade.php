@@ -14,7 +14,7 @@
                 </div>
              @endif --}}
             <div class="card-body">
-         
+
             <form action="{{ route('add.reservation') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class=" px-md-1">
@@ -26,10 +26,10 @@
                     @enderror
                     </div>
                 </div>
-            
-           
+
+
                 <div class="">
-                    <div class="form-group">  
+                    <div class="form-group">
                     <label>Email</label>
                     <input type="text" name="email" class="form-control" value="{{ old('email') }}" >
                     @error('email')
@@ -47,10 +47,20 @@
                     </div>
                 </div>
                 <div class="">
+                    <div class="form-group row">
+                        <div class="col-sm-8">
+                        <select class="form-control" id="selectUser" name="eventselected" required focus>
+                     <option value="" disabled selected>Please select event</option>
+                     @foreach($eventslist as $event)
+                     <option value="{{$event->id}}">{{ $event->name }}</option>
+                     @endforeach
+                   </select>
+                   </div>
+
                     <div class="form-group">
                     <label>event name</label>
-                    <input type="text" name="event" class="form-control" value="{{ old('event') }}" >
-
+                    <input type="dropdown" name="event" class="form-control" value="{{ old('event') }}" >
+                    {{-- <option value="{{ $events->id }}" {{ $selectedevent == $events->id ? selected="selected" : '' }}>{{ $events->name }}</option> --}}
                         @error('event')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -59,5 +69,5 @@
                 <button type="submit" class="btn btn-fill btn-primary">Save</button>
 
             </form>
-         
+
 @stop

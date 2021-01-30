@@ -12,7 +12,9 @@ class Reservation extends Model
 
     // RESERVATION USERS
 
-    // public function users (){
-    //     return $this->belongsTo('App\Models\User','r_id');
-    // }
+
+    public function event (){
+        return $this->belongsTo('App\Models\Event');
+    }
+    
 }

@@ -8,11 +8,20 @@ class Event extends Model
 {
     public $timestamps = false;
     protected $table ='events';
-    protected $fillable=['e_name','e_date','e_location','e_description'];
-   
-   
-   
-    // public function reservation (){
-    //     return $this->belongsTo('App\Models\User','r_id','id');
+    protected $fillable= ['e_name','e_location','e_date','e_description','e_photo'];
+
+    public function artists(){
+
+        return $this->belongsToMany('App\Models\Artist','artist_event',
+            'a_id','e_id','id','id') ;
+
+    // $events->artist
+    }
+    // public function events(){
+
+    //     return $this->belongsToMany('App\Models\Event','artist_event',
+    //         'e_id','a_id','id','id') ;
+
+    // // $events->artist
     // }
 }

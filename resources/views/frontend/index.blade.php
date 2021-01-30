@@ -9,7 +9,7 @@
         $categories =App\Models\Category::select('id','c_name')->get()
     @endphp
 
-        <input type="hidden " name="_token" value="{{ csrf_token() }}" class="form-control">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}" class="form-control">
         <select id="category"  class=" form-control"  >
 
             <option > All Categories</option>
@@ -60,8 +60,8 @@
 <!-- Start feature Area -->
 <section class="feature-area pb-100" id="feature">
     <div class="container">
-        @foreach($artists as $artist)
-        
+        {{-- @foreach($artists as $artist)
+
         <div class="row">
             <div class="col-lg-4 col-md-4 no-padding single-img">
                     <img src="public/photos/artists/{{ $artist->a_photo }}" class="image img-fluid" alt="{{ $artist->a_name }}">
@@ -70,7 +70,7 @@
                     <p>{{ $artist->namde }}</p>
                     </div>
             </div>
-            @endforeach
+            @endforeach --}}
             {{-- <div class="col-lg-4 col-md-4 no-padding single-img">
                     <img src="frontstyle/img/f2.jpg" class="image img-fluid">
                     <div class="middle">

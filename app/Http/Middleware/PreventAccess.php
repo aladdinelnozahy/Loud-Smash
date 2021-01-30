@@ -15,10 +15,10 @@ class PreventAccess
      */
     public function handle($request, Closure $next)
     {
-        // if (!Session()->get('u_username')) {
-        //     // return 'access denid';
-        //     return redirect('/admin');
-        // }
+        if (!session()->get('u_role')) {
+            // return 'access denid';
+            return redirect()->Route('admin.login');
+        }
         return $next($request);
     }
 }

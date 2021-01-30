@@ -12,7 +12,7 @@
             <form action="{{ route('update.user',$user->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                
+
                     <div class="col-md-6 px-md-1">
                         <div class="form-group">
                         <label>Username</label>
@@ -41,11 +41,11 @@
                     @enderror
                 </div>
                 </div>
-               
+
                 <div class=" pl-md-1">
                     <div class="form-group">
                     <label>Password</label>
-                    <input type="password" name="pass" class="form-control" value="{{ $user->u_password }}" >
+                    <input type="password" name="pass" class="form-control" value="{{ $user->u_pass }}" >
                     @error('password')
                     <span class="text-danger">{{ $message }}</span>
                      @enderror
@@ -58,17 +58,25 @@
                     <input type="text" name="phone" class="form-control" value="{{ $user->u_phone }}">
                     </div>
                 </div>
-                {{-- <div class=" pr-md-1">
-                    <label class="form-label" for="customFile">Upload user Photo</label>
-                    <input type="file" name="photo" class="form-control" id="customFile" value="{{ $user->u_photo }}" />        
-                </div> --}}
+
+                <div class=" pr-md-1">
+                    <div class="form-group">
+                    <label>role</label>
+                    <input type="text" name="phone" class="form-control" value="{{ $user->u_role }}">
+                    </div>
+                </div>
+                <div class=" pr-md-1">
+                    <label class="form-label" for="customFile">Photo</label>
+                    <img src="/photos/users/{{ $user->u_photo }}" class="img-size" alt="">
+                    <input type="file" name="photo" class="form-control" id="customFile"  />
+                </div>
                     <button type="submit" class="btn btn-fill btn-primary">Edit</button>
-        
+
             </form>
             </div>
     </div>
 </div>
-   
+
 
 
 @stop

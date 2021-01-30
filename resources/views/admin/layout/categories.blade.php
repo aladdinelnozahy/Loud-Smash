@@ -17,14 +17,14 @@
 
             <div class="card-body">
                     <select name="category" class="col-md-6" style="text-align: center">
-                        
+
                         @foreach ( $categories as $category )
                         <option class="form-group " value="{{ $category->c_id }}">{{$category ['c_name']}}</option>
                         @endforeach
                     </select>
-    
+
                     <table class="table table-border title" style="color:white; text-align:center">
-                     
+
                         <tr>
                             <th>Category Name</th>
                             <th>edit</th>
@@ -36,7 +36,7 @@
                                 <td>
                                     {{$category ['c_name']}}
                                 </td>
-                                <td> 
+                                <td>
                                     <a href="{{ route('show.songs',$category->c_id) }}" class="btn btn-success">Show songs</a>
                                     <a href="{{ route('edit.category',$category->id) }}" class="btn btn-primary">Edit</a>
                                     <a href="{{ route('delete.category',$category->id ) }}" class="btn btn-danger">Delete</a>
@@ -46,12 +46,13 @@
                             @endforeach
                         </tbody>
                     </table>
+                    
             </div>
         </div>
-        
+
     </div>
 </div>
-    
+
 
 
 @stop

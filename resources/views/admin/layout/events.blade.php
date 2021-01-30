@@ -31,7 +31,7 @@
                             <td>{{$event ['e_description'] }}</td>
                             <td>{{$event ['e_location'] }}</td>
                             <td>{{$event ['e_date'] }}</td>
-                            <td> 
+                            <td>
                                 <a href="{{ route('edit.event',$event->id ) }}" class="btn btn-primary">Edit</a>
                                 <a href="{{ route('delete.event',$event->id ) }}" class="btn btn-danger">Delete</a>
                             </td>
@@ -41,12 +41,13 @@
                     </tbody>
 
                 </table>
-
-
                 
+
+
+
             </div>
         </div>
     </div>
 </div>
-         
+
 @stop

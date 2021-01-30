@@ -22,7 +22,8 @@
                         <th>User Name</th>
                         <th>Email</th>
                         <th>Phone</th>
-                        <th>Role</th>                        
+                        <th>Role</th>
+                        <th>Photo</th>
                         <th>Edit</th>
                     </tr>
                     <tbody>
@@ -33,13 +34,17 @@
                             <td>{{$user ['u_email'] }}</td>
                             <td>{{$user ['u_phone'] }}</td>
                             <td>{{$user ['u_role'] }}</td>
-                            <td> 
+
+                            <td><img src="{{$user->getPhoto() }}" class="img-size" alt="User Photo"></td>
+
+                            <td>
                                 <a href="{{ route('edit.user',$user->id) }}" class="btn btn-primary">Edit</a>
                                 <a href="{{ route('delete.user',$user->id ) }}" class="btn btn-danger">Delete</a>
-                        </td>
+                            </td>
+                        </tr>
                             @endforeach
 
-                        </tr>
+
                     </tbody>
                 </table>
 
@@ -49,7 +54,7 @@
             </div>
     </div>
 </div>
-   
+
 
 
 @stop

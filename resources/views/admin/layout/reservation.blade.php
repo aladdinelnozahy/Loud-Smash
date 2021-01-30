@@ -31,7 +31,7 @@
                             <td>{{$reservation  ['r_email'] }}</td>
                             <td>{{$reservation  ['r_phone'] }}</td>
                             <td>{{$reservation  ['e_id'] }}</td>
-                            <td> 
+                            <td>
                                 <a href="{{ route('edit.reservation',$reservation->id ) }}" class="btn btn-primary">Edit</a>
                                 <a href="{{ route('delete.reservation',$reservation->id ) }}" class="btn btn-danger">Delete</a>
                             </td>
@@ -43,10 +43,10 @@
                 </table>
 
 
-                
+
             </div>
         </div>
     </div>
 </div>
-         
+
 @stop

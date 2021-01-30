@@ -26,7 +26,7 @@ class EventRequest extends FormRequest
         return [
             'name'=>'required|unique:events,e_name',
             'location' => 'required:events,e_location',
-            'date' => 'required:events,e_date'
+            // 'date' => 'required:events,e_date'
     ];
     }
 
@@ -36,6 +36,7 @@ class EventRequest extends FormRequest
             'name.required'=>'Event name is required',
             'name.unique'=>'Event name already exist',
             'location.required'=>'location is required',
-            'date.required'=>'date is required'        ];
+            // 'date.required'=>'date is required'
+         ];
     }
 }

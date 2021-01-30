@@ -11,13 +11,21 @@ class User extends Model
     public $timestamps = false;
 
     protected $table ='users';
-    protected $fillable=['u_username','u_name','u_email','u_phone'];
-    protected $hidden =['u_pass' ,'r_id'];
+    protected $fillable=['u_username','u_name','u_email','u_pass' ,'u_role','u_phone','u_photo'];
 
+    public static $photodirectory = 'photos/users/';
+    public function getPhoto(){
+        if(!$this->u_photo){
+            return '/photos/default.jpg';
+        }else{
+            return '/'.self::$photodirectory.$this->u_photo ;
+
+        }
+    }
     // public function getRoleAttribute ($value){
     //   return  $value = $this->u_role == 1 ? 'Super Admin' : 'Admin';
     // }
-    public function reservation (){
-        return $this->hasMany('App\Models\Reservation',);
-    }
+    // public function reservation (){
+    //     return $this->hasMany('App\Models\Reservation',);
+    // }
 }

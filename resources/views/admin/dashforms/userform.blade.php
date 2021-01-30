@@ -12,7 +12,7 @@
             <form action="{{ route('add.user') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                
+
                     <div class="col-md-6 px-md-1">
                         <div class="form-group">
                         <label>Username</label>
@@ -40,11 +40,11 @@
                     @enderror
                     </div>
                 </div>
-               
+
                 <div class=" pl-md-1">
                     <div class="form-group">
                     <label>Password</label>
-                    <input type="password" name="pass" class="form-control"  value="{{ old('password') }}">
+                    <input type="password" name="pass" class="form-control"  value="{{ old('pass') }}">
                     @error('password')
                     <span class="text-danger">{{ $message }}</span>
                      @enderror
@@ -57,19 +57,29 @@
                     <input type="text" name="phone" class="form-control" value="{{ old('phone') }}" >
                     </div>
                 </div>
+
+                <div class=" pr-md-1">
+                    <div class="form-group">
+                    <label>Role</label>
+                    <input type="text" name="role" class="form-control"  >
+                    </div>
+                </div>
                 <div class=" pr-md-1">
                     <label class="form-label" for="customFile">Upload user Photo</label>
-                    <input type="file" name="photo" class="form-control" id="customFile" value="{{ old('photo') }}" >        
+                    <input type="file" name="photo" class="form-control" id="customFile" value="{{ old('photo') }}" >
+                    @error('photo')
+                    <span class="text-danger">{{ $message }}</span>
+                     @enderror
                 </div>
                 <div >
                     <button type="submit" class="btn btn-fill btn-primary">Save</button>
                 </div>
-        
+
             </form>
             </div>
     </div>
 </div>
-   
+
 
 
 @stop

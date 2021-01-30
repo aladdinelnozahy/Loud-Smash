@@ -5,16 +5,18 @@
 <!-- end header -->
 <body class=" ">
 
-
-
-@if(Session()->get('u_role') ==1) 
+{{-- {{ Auth::user()->name }} --}}
+{{-- {{ request()->session()->pull('u_role', '  ') }}; --}}
+{{-- {{ Session()->get('u_role') }} --}}
+@if(Session()->get('u_role') == 1)
 <!-- start sidebar -->
 @include('admin.includes.adminsidebardash')
 <!-- end sidebar -->
 
 @else
-{{-- @include('admin.includes.usersidebardash') --}}
-@include('admin.includes.adminsidebardash')
+
+@include('admin.includes.usersidebardash')
+{{-- @include('admin.includes.adminsidebardash') --}}
 
 @endif
 
@@ -23,7 +25,7 @@
 
 
   <div class="wrapper ">
-    
+
     <div class="main-panel">
       <!--start Navbar -->
        @include('admin.includes.navbardash')
@@ -102,7 +104,7 @@
     <script src="../dashstyle/assets/js/core/bootstrap.min.js"></script>
     <script src="../dashstyle/assets/js/script.js"></script>
     <script src="../dashstyle/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-    
+
 
     <!--  Google Maps Plugin    -->
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
