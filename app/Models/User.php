@@ -22,6 +22,10 @@ class User extends Model
 
         }
     }
+
+    public function scopeInactive($q){
+       return $q->where('status',);
+    }
     // public function getRoleAttribute ($value){
     //   return  $value = $this->u_role == 1 ? 'Super Admin' : 'Admin';
     // }

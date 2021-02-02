@@ -100,6 +100,7 @@ class SongController extends Controller
         if ($request->photo) {
             $filename =$this->savePhoto($request->photo, Song::$photodirectory);
             $song->s_photo =$filename ;
+            
         }
 
         $song->save();

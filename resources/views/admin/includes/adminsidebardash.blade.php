@@ -51,13 +51,7 @@
           <span class="badge badge-info">{{ App\Models\Event::count() }}</span>
         </a>
       </li>
-      <li>
-        <a href="{{Route('admin.reservation')}}">
-          <i class="tim-icons icon-puzzle-10"></i>
-          <span>Reservation</span>
-          <span class="badge badge-info">{{ App\Models\Reservation::count() }}</span>
-        </a>
-      </li>
+      
       <li>
         <a href="{{Route('admin.categories')}}">
           <i class="tim-icons icon-align-center"></i>

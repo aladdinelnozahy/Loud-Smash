@@ -57,59 +57,6 @@
 </section>
 <!-- End quote Area -->
 
-<!-- Start feature Area -->
-<section class="feature-area pb-100" id="feature">
-    <div class="container">
-        {{-- @foreach($artists as $artist)
-
-        <div class="row">
-            <div class="col-lg-4 col-md-4 no-padding single-img">
-                    <img src="public/photos/artists/{{ $artist->a_photo }}" class="image img-fluid" alt="{{ $artist->a_name }}">
-                    <div class="middle">
-                    <h2 class="text-uppercase text-white">Concert Toronto</h2>
-                    <p>{{ $artist->namde }}</p>
-                    </div>
-            </div>
-            @endforeach --}}
-            {{-- <div class="col-lg-4 col-md-4 no-padding single-img">
-                    <img src="frontstyle/img/f2.jpg" class="image img-fluid">
-                    <div class="middle">
-                    <h2 class="text-uppercase text-white">Concert Toronto</h2>
-                    <p>Need concert details</p>
-                    </div>
-            </div>
-            <div class="col-lg-4 col-md-4 no-padding single-img">
-                    <img src="frontstyle/img/f3.jpg" class="image img-fluid">
-                    <div class="middle">
-                    <h2 class="text-uppercase text-white">Concert Toronto</h2>
-                    <p>Need concert details</p>
-                    </div>
-            </div>
-            <div class="col-lg-6 col-sm-12 no-padding single-img">
-                    <img src="frontstyle/img/f4.jpg" class="image img-fluid">
-                    <div class="middle2">
-                    <a href="https://www.youtube.com/watch?v=L3V7LKYPIUQ" class="play-btn">
-                        <img class="vdo-icon" src="frontstyle/img/video-btn.png" alt="">
-                    </a>
-                    <h2 class="text-uppercase text-white">Being unique is the preference</h2>
-                    <p>Youtube video will appear in popover</p>
-                    </div>
-            </div>
-            <div class="col-lg-6 col-sm-12 no-padding single-img">
-                    <img src="frontstyle/img/f5.jpg" class="image img-fluid">
-                    <div class="middle2">
-                    <a href="https://www.youtube.com/watch?v=L3V7LKYPIUQ" class="play-btn">
-                        <img class="vdo-icon" src="img/video-btn.png" alt="">
-                    </a>
-                    <h2 class="text-uppercase text-white">Being unique is the preference</h2>
-                    <p>Youtube video will appear in popover</p>
-                    </div>
-            </div> --}}
-
-        </div>
-    </div>
-</section> -->
-<!-- End feature Area -->
 
 <!-- Start service Area -->
 <section class="service-area pt-100 pb-100" data-parallax="scroll" data-image-src="frontstyle/img/service-bg.jpg">
@@ -219,41 +166,7 @@
 <!-- End About Area -->
 
 <!-- Start contact Area -->
-<section class="contact-area pt-100 pb-100" id="contact">
-    <div class="container">
-        <div class="row d-flex justify-content-center">
-            <div class="col-lg-4 title-section">
-                <h2 class="text-uppercase">
-                    Send <br>
-                    Us <br>
-                    Message
-                </h2>
-                <p>
-                    We won’t send any kind of spam
-                </p>
-            </div>
-            <div class="col-lg-8">
-                    <form id="myForm" action="mail.php" method="post" class="contact-form">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-6">
-                                <input name="fname" placeholder="Enter your name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" class="common-input mt-20" required="" type="text">
 
-                                <input name="email" placeholder="Enter email address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" class="common-input mt-20" required="" type="email">
-
-                                <input name="phone" placeholder="Enter phone number"  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter phone number'" class="common-input mt-20" required="" type="tel">
-                            </div>
-                            <div class="col-lg-6">
-                                <textarea class="common-textarea mt-20" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
-
-                                <button class="primary-btn d-inline-flex align-items-center mt-20"><span class="mr-10">Send Message</span><span class="lnr lnr-arrow-right"></span></button> <br>
-                                <div class="alert-msg"></div>
-                            </div>
-                        </div>
-                    </form>
-            </div>
-        </div>
-    </div>
-</section>
 <!-- End contact Area -->
 @stop
 

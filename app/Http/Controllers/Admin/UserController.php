@@ -116,7 +116,10 @@ class UserController extends Controller{
         return redirect()->back()->with('success','User Updated Successfully');
     }
     //==============end save edited category=====================
-
+    // public function show_inactive_users(){
+    //     return User::where('status',0)->get();
+    //     // return User::inactive()->get();
+    // }
 
 
 }

@@ -13,7 +13,7 @@ define('PAGINATE',4);
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//'prefix'=> '{locale}',
 Route::group(['namespace' => 'FrontEnd'] , function(){
     Route::get('/', 'SiteController@index')->name('site.home');
 
